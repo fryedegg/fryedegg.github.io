@@ -2,6 +2,17 @@
 (() => {
   'use strict';
   const TAU = Math.PI * 2;
+  const MIN_ZOOM = .65;
+  // Decorative discoveries sit behind the atlas; they never change campaign coordinates.
+  const HARVEST_STARS = [
+    [-210,780],[-210,390],[-210,-40],[-210,-390],[-210,-710],
+    [-330,-860],[-310,-1000],[-260,-1110],[-150,-1220],[0,-1260],
+    [150,-1220],[260,-1110],[310,-1000],[330,-860],[210,-710],
+    [210,-390],[210,-40],[210,390],[210,780],
+    [310,680],[530,680],[690,790],[740,1010],[670,1200],[470,1290],
+    [270,1270],[90,1160],[0,1070],[-90,1160],[-270,1270],
+    [-470,1290],[-670,1200],[-740,1010],[-690,790],[-530,680],[-310,680]
+  ];
   const hash = s => [...s].reduce((n,c) => (Math.imul(n,31) + c.charCodeAt(0)) | 0, 7) >>> 0;
   const rng = seed => () => ((seed = Math.imul(seed,1664525) + 1013904223 >>> 0) / 4294967296);
   const coords = l => {
@@ -29,6 +40,12 @@
       this.zoom=1;this.pan={x:0,y:0};this.target={x:0,y:0};this.motion=options.motion;this.chart=false;this.filter='all';this.selected=null;this.sessionIndex=this.sessions.length-1;this.raf=0;this.time=0;this.lastFrame=0;this.width=1;this.height=1;this.dragDistance=0;
       for(const l of this.locations){const b=document.createElement('button');b.className='world-pin'+(l.visitedBy?' visited':'');b.type='button';b.setAttribute('aria-label',l.name+' — open map selection');b.title=l.name;b.dataset.world=l.id;b.innerHTML='<i aria-hidden="true"></i><span></span>';b.querySelector('span').textContent=l.name;this.nodes.append(b);this.pins.set(l.id,b);this.textures.set(l.id,planetTexture(l));
         b.addEventListener('click',e=>{e.stopPropagation();if(this.dragDistance>8)return;this.select(l.id);},{signal:this.signal});}
+      this.realmPin=document.createElement('button');
+      this.realmPin.type='button';this.realmPin.className='realm-pin';this.realmPin.hidden=true;
+      this.realmPin.setAttribute('aria-label','Celestial Tunnel — divine plane of existence, A Day With Doc. Open realm dossier.');
+      this.realmPin.innerHTML='<span>DIVINE REALM · PLANE OF EXISTENCE</span><strong>Celestial Tunnel</strong><small>A Day With Doc ↗</small>';
+      this.nodes.append(this.realmPin);
+      this.realmPin.addEventListener('click',e=>{e.stopPropagation();if(this.dragDistance<=8)window.location.hash='#world/celestial-tunnel';},{signal:this.signal});
       this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(stage);
       stage.addEventListener('wheel',e=>{e.preventDefault();this.changeZoom(e.deltaY>0?.89:1.12,{x:e.clientX-stage.getBoundingClientRect().left,y:e.clientY-stage.getBoundingClientRect().top});},{passive:false,signal:this.signal});
       stage.addEventListener('pointerdown',e=>this.pointerDown(e),{signal:this.signal});stage.addEventListener('pointermove',e=>this.pointerMove(e),{signal:this.signal});stage.addEventListener('pointerup',e=>this.pointerUp(e),{signal:this.signal});stage.addEventListener('pointercancel',e=>this.pointerUp(e),{signal:this.signal});
@@ -45,8 +62,38 @@
     }
     project(v){const tilt=this.chart?1:(this.width<700?.78:.59),rot=this.chart?0:-.12;const rx=v.x*Math.cos(rot)-v.y*Math.sin(rot),ry=v.x*Math.sin(rot)+v.y*Math.cos(rot);return {x:this.width*.48+(rx+this.pan.x)*this.base*this.zoom,y:this.height*.47+(ry*tilt+this.pan.y)*this.base*this.zoom,depth:ry/1100};}
     visible(l){return this.filter==='all'||(this.filter==='visited'?!!l.visitedBy:l.visitedBy===this.filter||l.visitedBy==='both');}
+    fullyZoomedOut(){return this.zoom<=MIN_ZOOM+.005;}
+    drawOverviewSecrets(x){
+      const visible=this.fullyZoomedOut();this.realmPin.hidden=!visible;
+      this.stage.dataset.constellation=visible?'visible':'hidden';
+      if(!visible)return;
+      const stars=HARVEST_STARS.map(([xx,yy])=>this.project({x:xx,y:yy*(this.chart?.72:1)}));
+      const pulse=this.motion?.94+.06*Math.sin(this.time*.0006):1;
+      x.save();x.globalAlpha=pulse;x.lineJoin='round';x.lineCap='round';
+      const connect=points=>{x.beginPath();points.forEach((p,i)=>i?x.lineTo(p.x,p.y):x.moveTo(p.x,p.y));};
+      connect([...stars,stars[0]]);x.strokeStyle='#75a9e22b';x.lineWidth=5;x.stroke();
+      x.strokeStyle='#9bbcff91';x.lineWidth=1.3;x.shadowColor='#7a9aff';x.shadowBlur=10;x.stroke();
+      const crown=[[-330,-860],[-160,-810],[0,-790],[160,-810],[330,-860]].map(([xx,yy])=>this.project({x:xx,y:yy*(this.chart?.72:1)}));
+      connect(crown);x.strokeStyle='#9bbcff65';x.lineWidth=1;x.stroke();x.shadowBlur=0;
+      for(const [i,p] of [...stars,...crown.slice(1,-1)].entries()){
+        const radius=i%5===0?2.7:1.9;
+        const halo=x.createRadialGradient(p.x,p.y,0,p.x,p.y,13);halo.addColorStop(0,'#a9c5ff72');halo.addColorStop(1,'#6b99ec00');
+        x.fillStyle=halo;x.fillRect(p.x-13,p.y-13,26,26);x.fillStyle=i%5===0?'#f2dbb3':'#dce8ff';x.beginPath();x.arc(p.x,p.y,radius,0,TAU);x.fill();
+        if(i%5===0){x.strokeStyle='#dce8ff80';x.lineWidth=.7;x.beginPath();x.moveTo(p.x-6,p.y);x.lineTo(p.x+6,p.y);x.moveTo(p.x,p.y-6);x.lineTo(p.x,p.y+6);x.stroke();}
+      }
+      // A portal is an illustrative reference to an extra-planar realm, not another planet.
+      const portal=this.project({x:-1230,y:this.chart?-650:-1110});this.realmPosition=portal;
+      const radius=this.width<700?18:27;
+      const veil=x.createRadialGradient(portal.x,portal.y,2,portal.x,portal.y,radius*2.7);veil.addColorStop(0,'#bd9ce954');veil.addColorStop(.35,'#795aab2b');veil.addColorStop(1,'#795aab00');
+      x.fillStyle=veil;x.fillRect(portal.x-radius*3,portal.y-radius*3,radius*6,radius*6);
+      x.strokeStyle='#c3a3e9b3';x.lineWidth=1.4;x.shadowColor='#b6a0ec';x.shadowBlur=14;x.beginPath();x.ellipse(portal.x,portal.y,radius*.65,radius,-.35,0,TAU);x.stroke();
+      x.strokeStyle='#8cd8dc66';x.lineWidth=.65;x.beginPath();x.ellipse(portal.x,portal.y,radius*.87,radius*1.22,-.35,0,TAU);x.stroke();x.shadowBlur=0;
+      x.fillStyle='#d7c6eb';x.font='19px Georgia';x.textAlign='center';x.fillText('◇',portal.x,portal.y+6);x.restore();
+      this.realmPin.style.left=(portal.x+radius+10)+'px';this.realmPin.style.top=portal.y+'px';
+    }
     draw(){if(!this.ctx||this.destroyed)return;const x=this.ctx,w=this.width,h=this.height;x.drawImage(this.background,0,0,w,h);
       if(this.motion&&!document.hidden){for(let i=0;i<this.stars.length;i+=17){const s=this.stars[i];x.globalAlpha=.2+.25*Math.sin(this.time*.001+s.phase);x.fillStyle='#c7dfef';x.fillRect(s.x,s.y,1.5,1.5);}x.globalAlpha=1;}
+      this.drawOverviewSecrets(x);
       for(const [i,r] of [280,540,820].entries()){x.beginPath();for(let n=0;n<=140;n++){const a=n/140*TAU,p=this.project({x:Math.cos(a)*r,y:Math.sin(a)*r});if(n===0)x.moveTo(p.x,p.y);else x.lineTo(p.x,p.y);}x.strokeStyle=['#91acb127','#88aeca32','#6a86ae38'][i];x.lineWidth=.7;x.setLineDash(i===2?[3,7]:[]);x.stroke();x.setLineDash([]);
         const p=this.project({x:-r*.65,y:-r*.76});x.font='8px JetBrains Mono, monospace';x.fillStyle='#65839a88';x.fillText(['INNER RIM','MIDREACH','OUTER RIM'][i],p.x-35,p.y-20);}
       // Session path connects only locations actually named in the flight log.
@@ -74,10 +121,10 @@
     reset(){this.zoom=1;this.pan={x:0,y:0};this.target={x:0,y:0};this.selected=null;this.options.onSelect(null);this.draw();}
     select(id){this.selected=id;this.options.onSelect(this.locations.find(l=>l.id===id));this.draw();this.schedule();}
     focus(id){const l=this.locations.find(l=>l.id===id);if(!l)return;const p=coords(l),r=this.chart?0:-.12;this.zoom=Math.max(this.zoom,1.65);this.target={x:-(p.x*Math.cos(r)-p.y*Math.sin(r))+(this.width<700?-50:-140),y:-(p.x*Math.sin(r)+p.y*Math.cos(r))*(this.chart?1:(this.width<700?.78:.59))+80};this.select(id);this.schedule();}
-    changeZoom(factor,anchor){const z=Math.max(.65,Math.min(5,this.zoom*factor));if(anchor){const p={x:(anchor.x-this.width*.48)/(this.base*this.zoom)-this.pan.x,y:(anchor.y-this.height*.47)/(this.base*this.zoom)-this.pan.y};this.pan.x=(anchor.x-this.width*.48)/(this.base*z)-p.x;this.pan.y=(anchor.y-this.height*.47)/(this.base*z)-p.y;this.target={...this.pan};}this.zoom=z;this.draw();}
-    pointerDown(e){if(e.button>0)return;this.dragDistance=0;this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(!e.target.closest('.world-pin'))this.stage.setPointerCapture(e.pointerId);this.lastPointer={x:e.clientX,y:e.clientY};this.stage.classList.add('dragging');if(this.pointers.size===2){const v=[...this.pointers.values()];this.pinch=Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y);}}
+    changeZoom(factor,anchor){const z=Math.max(MIN_ZOOM,Math.min(5,this.zoom*factor));if(anchor){const p={x:(anchor.x-this.width*.48)/(this.base*this.zoom)-this.pan.x,y:(anchor.y-this.height*.47)/(this.base*this.zoom)-this.pan.y};this.pan.x=(anchor.x-this.width*.48)/(this.base*z)-p.x;this.pan.y=(anchor.y-this.height*.47)/(this.base*z)-p.y;this.target={...this.pan};}if(z===MIN_ZOOM&&this.zoom!==MIN_ZOOM){this.pan={x:0,y:0};this.target={x:0,y:0};}this.zoom=z;this.draw();}
+    pointerDown(e){if(e.button>0)return;this.dragDistance=0;this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(!e.target.closest('.world-pin,.realm-pin'))this.stage.setPointerCapture(e.pointerId);this.lastPointer={x:e.clientX,y:e.clientY};this.stage.classList.add('dragging');if(this.pointers.size===2){const v=[...this.pointers.values()];this.pinch=Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y);}}
     pointerMove(e){if(!this.pointers.has(e.pointerId))return;const old=this.pointers.get(e.pointerId);this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.dragDistance+=Math.hypot(e.clientX-old.x,e.clientY-old.y);if(this.pointers.size===2){const v=[...this.pointers.values()],d=Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y);if(this.pinch)this.changeZoom(d/this.pinch);this.pinch=d;return;}const scale=this.base*this.zoom;this.pan.x+=(e.clientX-old.x)/scale;this.pan.y+=(e.clientY-old.y)/scale;this.target={...this.pan};this.draw();}
-    pointerUp(e){this.pointers.delete(e.pointerId);if(this.pointers.size<2)this.pinch=null;if(!this.pointers.size)this.stage.classList.remove('dragging');if(this.dragDistance<8&&!e.target.closest('.world-pin')){const rect=this.stage.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;let best=null,d=28;for(const [id,p] of this.positions){const dd=Math.hypot(p.x-px,p.y-py);if(dd<d){best=id;d=dd;}}if(best)this.select(best);}}
+    pointerUp(e){this.pointers.delete(e.pointerId);if(this.pointers.size<2)this.pinch=null;if(!this.pointers.size)this.stage.classList.remove('dragging');if(this.dragDistance<8&&!e.target.closest('.world-pin,.realm-pin')){const rect=this.stage.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;if(this.fullyZoomedOut()&&this.realmPosition&&Math.hypot(this.realmPosition.x-px,this.realmPosition.y-py)<28){this.realmPin.click();return;}let best=null,d=28;for(const [id,p] of this.positions){const dd=Math.hypot(p.x-px,p.y-py);if(dd<d){best=id;d=dd;}}if(best)this.select(best);}}
     destroy(){this.destroyed=true;this.stop();this.abort?.abort();this.resizeObserver?.disconnect();}
   }
   window.ShatteringGalaxy=Galaxy;
