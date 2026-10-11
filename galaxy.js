@@ -49,9 +49,9 @@
       this.resizeObserver=new ResizeObserver(()=>this.resize());this.resizeObserver.observe(stage);
       stage.addEventListener('wheel',e=>{e.preventDefault();this.changeZoom(e.deltaY>0?.89:1.12,{x:e.clientX-stage.getBoundingClientRect().left,y:e.clientY-stage.getBoundingClientRect().top});},{passive:false,signal:this.signal});
       stage.addEventListener('pointerdown',e=>this.pointerDown(e),{signal:this.signal});stage.addEventListener('pointermove',e=>this.pointerMove(e),{signal:this.signal});stage.addEventListener('pointerup',e=>this.pointerUp(e),{signal:this.signal});stage.addEventListener('pointercancel',e=>this.pointerUp(e),{signal:this.signal});
-      document.addEventListener('visibilitychange',()=>{if(document.hidden)this.stop();else this.schedule();},{signal:this.signal});this.resize();
+      document.addEventListener('visibilitychange',()=>{if(document.hidden)this.stop();else this.schedule();},{signal:this.signal});this.resize();document.fonts?.ready.then(()=>{if(!this.destroyed){this.labelKey=null;this.draw();}});
     }
-    resize(){const r=this.stage.getBoundingClientRect();this.width=r.width;this.height=r.height;const dpr=Math.min(window.devicePixelRatio||1,2);this.canvas.width=Math.round(r.width*dpr);this.canvas.height=Math.round(r.height*dpr);this.ctx.setTransform(dpr,0,0,dpr,0,0);this.base=Math.min(this.width/2180,(this.height-220)/(this.width<700?1150:1420));this.base=Math.max(.15,this.base);this.makeBackground();this.draw();this.schedule();}
+    resize(){const r=this.stage.getBoundingClientRect();this.width=r.width;this.height=r.height;const dpr=Math.min(window.devicePixelRatio||1,2);this.canvas.width=Math.round(r.width*dpr);this.canvas.height=Math.round(r.height*dpr);this.ctx.setTransform(dpr,0,0,dpr,0,0);this.base=Math.min(this.width/2400,(this.height-220)/(this.width<700?1150:1420));this.base=Math.max(.15,this.base);this.makeBackground();this.draw();this.schedule();}
     makeBackground(){const c=document.createElement('canvas');c.width=this.width;c.height=this.height;const x=c.getContext('2d'),r=rng(62842);x.fillStyle='#050a14';x.fillRect(0,0,c.width,c.height);
       for(const [px,py,radius,color] of [[.65,.44,.62,'#182b4b'],[.22,.55,.45,'#193941'],[.8,.3,.28,'#40264f']]){const g=x.createRadialGradient(c.width*px,c.height*py,0,c.width*px,c.height*py,c.width*radius);g.addColorStop(0,color+'77');g.addColorStop(.4,color+'28');g.addColorStop(1,color+'00');x.fillStyle=g;x.fillRect(0,0,c.width,c.height);}
       // Wisps run behind the orbital plane; generated once per resize.
@@ -60,36 +60,88 @@
       for(let i=0;i<count;i++){const star={x:r()*c.width,y:r()*c.height,r:r()*.9+.25,a:r()*.6+.15,phase:r()*TAU};this.stars.push(star);x.globalAlpha=star.a;x.fillStyle=i%9?'#c0d4e9':'#ded0b4';x.fillRect(star.x,star.y,star.r,star.r);if(star.r>1){x.globalAlpha=.05;x.beginPath();x.arc(star.x,star.y,3,0,TAU);x.fill();}}
       x.globalAlpha=1;this.background=c;
     }
-    project(v){const tilt=this.chart?1:(this.width<700?.78:.59),rot=this.chart?0:-.12;const rx=v.x*Math.cos(rot)-v.y*Math.sin(rot),ry=v.x*Math.sin(rot)+v.y*Math.cos(rot);return {x:this.width*.48+(rx+this.pan.x)*this.base*this.zoom,y:this.height*.47+(ry*tilt+this.pan.y)*this.base*this.zoom,depth:ry/1100};}
+    project(v){const tilt=this.chart?1:(this.width<700?.78:.59),rot=this.chart?0:-.12;const rx=v.x*Math.cos(rot)-v.y*Math.sin(rot),ry=v.x*Math.sin(rot)+v.y*Math.cos(rot);return {x:this.width*.48+(rx+this.pan.x)*this.base*this.zoom,y:this.height*.52+(ry*tilt+this.pan.y)*this.base*this.zoom,depth:ry/1100};}
     visible(l){return this.filter==='all'||(this.filter==='visited'?!!l.visitedBy:l.visitedBy===this.filter||l.visitedBy==='both');}
     fullyZoomedOut(){return this.zoom<=MIN_ZOOM+.005;}
-    drawOverviewSecrets(x){
-      const visible=this.fullyZoomedOut();this.realmPin.hidden=!visible;
-      this.stage.dataset.constellation=visible?'visible':'hidden';
-      if(!visible)return;
-      const stars=HARVEST_STARS.map(([xx,yy])=>this.project({x:xx,y:yy*(this.chart?.72:1)}));
-      const pulse=this.motion?.94+.06*Math.sin(this.time*.0006):1;
-      x.save();x.globalAlpha=pulse;x.lineJoin='round';x.lineCap='round';
+    constellationPoint([xx, yy]) {
+      const angle = Math.PI / 3, across = xx * .65;
+      return this.project({x:(across*Math.cos(angle)-yy*Math.sin(angle))*1.42,
+        y:(across*Math.sin(angle)+yy*Math.cos(angle))*1.42*(this.chart?.6:1)});
+    }
+    drawOverviewSecrets(x) {
+      const overview = this.fullyZoomedOut();
+      this.stage.dataset.constellation = 'visible';
+      this.stage.dataset.constellationComplete = String(overview);
+      this.realmPin.hidden = !overview;
+      const stars = HARVEST_STARS.map(p => this.constellationPoint(p));
+      const crown = [[-330,-860],[-160,-810],[0,-790],[160,-810],[330,-860]].map(p => this.constellationPoint(p));
+      x.save();x.globalAlpha=this.motion?.88+.08*Math.sin(this.time*.0006):.94;
+      x.lineJoin='round';x.lineCap='round';
       const connect=points=>{x.beginPath();points.forEach((p,i)=>i?x.lineTo(p.x,p.y):x.moveTo(p.x,p.y));};
-      connect([...stars,stars[0]]);x.strokeStyle='#75a9e22b';x.lineWidth=5;x.stroke();
-      x.strokeStyle='#9bbcff91';x.lineWidth=1.3;x.shadowColor='#7a9aff';x.shadowBlur=10;x.stroke();
-      const crown=[[-330,-860],[-160,-810],[0,-790],[160,-810],[330,-860]].map(([xx,yy])=>this.project({x:xx,y:yy*(this.chart?.72:1)}));
-      connect(crown);x.strokeStyle='#9bbcff65';x.lineWidth=1;x.stroke();x.shadowBlur=0;
-      for(const [i,p] of [...stars,...crown.slice(1,-1)].entries()){
-        const radius=i%5===0?2.7:1.9;
-        const halo=x.createRadialGradient(p.x,p.y,0,p.x,p.y,13);halo.addColorStop(0,'#a9c5ff72');halo.addColorStop(1,'#6b99ec00');
+      connect([...stars,stars[0]]);x.strokeStyle='#759fd222';x.lineWidth=5;x.stroke();
+      x.strokeStyle='#a4beed75';x.lineWidth=1.1;x.shadowColor='#829ae6';x.shadowBlur=9;x.stroke();
+      connect(crown);x.strokeStyle='#a4beed5a';x.lineWidth=.9;x.stroke();x.shadowBlur=0;
+      for(const [i,p] of [...stars,...crown.slice(1,-1)].entries()) {
+        const radius=i%5===0?2.6:1.8;
+        const halo=x.createRadialGradient(p.x,p.y,0,p.x,p.y,13);halo.addColorStop(0,'#afcaff70');halo.addColorStop(1,'#6b99ec00');
         x.fillStyle=halo;x.fillRect(p.x-13,p.y-13,26,26);x.fillStyle=i%5===0?'#f2dbb3':'#dce8ff';x.beginPath();x.arc(p.x,p.y,radius,0,TAU);x.fill();
-        if(i%5===0){x.strokeStyle='#dce8ff80';x.lineWidth=.7;x.beginPath();x.moveTo(p.x-6,p.y);x.lineTo(p.x+6,p.y);x.moveTo(p.x,p.y-6);x.lineTo(p.x,p.y+6);x.stroke();}
+        if(i%5===0){x.strokeStyle='#dce8ff70';x.lineWidth=.7;x.beginPath();x.moveTo(p.x-5,p.y);x.lineTo(p.x+5,p.y);x.moveTo(p.x,p.y-5);x.lineTo(p.x,p.y+5);x.stroke();}
       }
-      // A portal is an illustrative reference to an extra-planar realm, not another planet.
-      const portal=this.project({x:-1230,y:this.chart?-650:-1110});this.realmPosition=portal;
-      const radius=this.width<700?18:27;
-      const veil=x.createRadialGradient(portal.x,portal.y,2,portal.x,portal.y,radius*2.7);veil.addColorStop(0,'#bd9ce954');veil.addColorStop(.35,'#795aab2b');veil.addColorStop(1,'#795aab00');
-      x.fillStyle=veil;x.fillRect(portal.x-radius*3,portal.y-radius*3,radius*6,radius*6);
-      x.strokeStyle='#c3a3e9b3';x.lineWidth=1.4;x.shadowColor='#b6a0ec';x.shadowBlur=14;x.beginPath();x.ellipse(portal.x,portal.y,radius*.65,radius,-.35,0,TAU);x.stroke();
-      x.strokeStyle='#8cd8dc66';x.lineWidth=.65;x.beginPath();x.ellipse(portal.x,portal.y,radius*.87,radius*1.22,-.35,0,TAU);x.stroke();x.shadowBlur=0;
-      x.fillStyle='#d7c6eb';x.font='19px Georgia';x.textAlign='center';x.fillText('◇',portal.x,portal.y+6);x.restore();
-      this.realmPin.style.left=(portal.x+radius+10)+'px';this.realmPin.style.top=portal.y+'px';
+      x.restore();
+      // The constellation represents the divine plane. It has no planetary orbit.
+      const tip=this.constellationPoint([0,-1260]);this.realmPosition=tip;
+      const labelWidth=this.width<700?165:220;
+      this.realmPin.style.left=Math.max(14,Math.min(this.width-labelWidth-14,tip.x-20))+'px';
+      this.realmPin.style.top=Math.max(242,Math.min(this.height-205,tip.y-40))+'px';
+    }
+    layoutLabels() {
+      const key=[this.width,this.height,this.zoom,this.pan.x.toFixed(2),this.pan.y.toFixed(2),this.chart,this.filter,this.selected,this.sessionIndex].join('|');
+      if(key===this.labelKey)return;
+      this.labelKey=key;this.labelSegments=[];
+      const stageRect=this.stage.getBoundingClientRect();
+      const intersects=(a,b,pad=3)=>a.x<b.x+b.w+pad&&a.x+a.w+pad>b.x&&a.y<b.y+b.h+pad&&a.y+a.h+pad>b.y;
+      const reserved=[...this.stage.parentElement.querySelectorAll('.map-hud,.map-legend,.flight-log,.map-zoom,.map-help,.map-selection,.map-compass')]
+        .filter(el=>!el.hidden&&el.getBoundingClientRect().width>0).map(el=>{const r=el.getBoundingClientRect();return{x:r.left-stageRect.left,y:r.top-stageRect.top,w:r.width,h:r.height};});
+      if(!this.realmPin.hidden){const r=this.realmPin.getBoundingClientRect();reserved.push({x:r.left-stageRect.left,y:r.top-stageRect.top,w:r.width,h:r.height});}
+      const used=[...reserved], planets=[...this.positions].map(([id,p])=>({id,x:p.x-p.radius-5,y:p.y-p.radius-5,w:(p.radius+5)*2,h:(p.radius+5)*2}));
+      const core=this.project({x:0,y:0});
+      const current=this.sessions[this.sessionIndex]?.where?.id;
+      const priority=l=>l.id===this.selected?0:l.id===current?1:l.visitedBy?2:l.rim==='outer'||l.rim==='unknown'?3:4;
+      const entries=this.locations.filter(l=>this.positions.has(l.id)).sort((a,b)=>priority(a)-priority(b)||a.id.localeCompare(b.id));
+      this.ctx.save();this.ctx.font=(this.width<700?'8':'9')+'px JetBrains Mono, monospace';
+      let shown=0;
+      for(const l of entries) {
+        const p=this.positions.get(l.id),b=this.pins.get(l.id),span=b.querySelector('span');
+        b.hidden=p.x<-25||p.x>this.width+25||p.y<-25||p.y>this.height+25;
+        if(b.hidden)continue;
+        const width=Math.ceil(this.ctx.measureText(l.name).width)+8,height=this.width<700?15:16,gap=p.radius+8;
+        const right=p.x>=core.x,down=p.y>=core.y;
+        const directions=right?['right','ur','dr','up','down','left','ul','dl']:['left','ul','dl','up','down','right','ur','dr'];
+        if(l.rim==='outer'||l.rim==='unknown')directions.splice(0,3,...(down?(right?['dr','right','down']:['dl','left','down']):(right?['ur','right','up']:['ul','left','up'])));
+        let chosen;
+        for(const delta of [0,14,-14,28,-28,44,-44,62,-62]) {
+          for(const dir of directions) {
+            let xx=p.x-width/2,yy=p.y-height/2;
+            if(dir.includes('r')||dir==='right')xx=p.x+gap;
+            if(dir.includes('l')||dir==='left')xx=p.x-gap-width;
+            if(dir==='up'||dir.startsWith('u'))yy=p.y-gap-height;
+            if(dir==='down'||dir.startsWith('d'))yy=p.y+gap;
+            if(dir==='left'||dir==='right')yy+=delta;else xx+=delta;
+            const candidate={x:xx,y:yy,w:width,h:height};
+            if(xx<12||yy<12||xx+width>this.width-12||yy+height>this.height-12)continue;
+            if(used.some(r=>intersects(candidate,r))||planets.some(r=>r.id!==l.id&&intersects(candidate,r,1)))continue;
+            chosen=candidate;break;
+          }
+          if(chosen)break;
+        }
+        if(chosen){used.push(chosen);shown++;b.dataset.labelHidden='false';
+          this.labelSegments.push({a:p,b:{x:Math.max(chosen.x,Math.min(chosen.x+width,p.x)),y:Math.max(chosen.y,Math.min(chosen.y+height,p.y))}});
+        }else{b.dataset.labelHidden='true';chosen={x:Math.max(12,Math.min(this.width-width-12,p.x+gap)),y:Math.max(12,Math.min(this.height-height-12,p.y-height/2))};}
+        b.style.left=p.x+'px';b.style.top=p.y+'px';b.style.transform='translate(-50%,-50%)';
+        span.style.left=(chosen.x-p.x+12)+'px';span.style.top=(chosen.y-p.y+12)+'px';span.style.opacity='';
+        b.classList.toggle('selected',l.id===this.selected);b.setAttribute('aria-pressed',String(l.id===this.selected));
+      }
+      this.ctx.restore();this.stage.dataset.visibleLabels=String(shown);
     }
     draw(){if(!this.ctx||this.destroyed)return;const x=this.ctx,w=this.width,h=this.height;x.drawImage(this.background,0,0,w,h);
       if(this.motion&&!document.hidden){for(let i=0;i<this.stars.length;i+=17){const s=this.stars[i];x.globalAlpha=.2+.25*Math.sin(this.time*.001+s.phase);x.fillStyle='#c7dfef';x.fillRect(s.x,s.y,1.5,1.5);}x.globalAlpha=1;}
@@ -102,13 +154,16 @@
       const core=this.project({x:0,y:0}),cr=14*Math.sqrt(this.zoom);let g=x.createRadialGradient(core.x,core.y,0,core.x,core.y,cr*6);g.addColorStop(0,'#e6c99d66');g.addColorStop(.3,'#e3af5933');g.addColorStop(1,'#ca966a00');x.fillStyle=g;x.fillRect(core.x-cr*6,core.y-cr*6,cr*12,cr*12);g=x.createRadialGradient(core.x-3,core.y-3,0,core.x,core.y,cr);g.addColorStop(0,'#fff1ce');g.addColorStop(.5,'#d4ae76');g.addColorStop(1,'#aa794a');x.fillStyle=g;x.beginPath();x.arc(core.x,core.y,cr,0,TAU);x.fill();x.fillStyle='#d1b47f98';x.font='8px JetBrains Mono, monospace';x.fillText('THE INNER LIGHT',core.x+cr+8,core.y+2);
       const current=this.sessions[this.sessionIndex]?.where?.id;
       const sorted=[...this.locations].sort((a,b)=>coords(a).y-coords(b).y);this.positions.clear();
-      for(const l of sorted){const b=this.pins.get(l.id);b.hidden=!this.visible(l);if(b.hidden)continue;const p=this.project(coords(l)),seed=hash(l.id),radius=(l.rim==='station'?6:9+(seed%9))*(this.chart?.64:(this.width<700?.54:1))*Math.sqrt(this.zoom)*(1+p.depth*.12);this.positions.set(l.id,p);
+      for(const l of sorted){const b=this.pins.get(l.id);b.hidden=!this.visible(l);if(b.hidden)continue;const p=this.project(coords(l)),seed=hash(l.id),radius=(l.rim==='station'?6:9+(seed%9))*(this.chart?.64:(this.width<700?.54:1))*Math.sqrt(this.zoom)*(1+p.depth*.12);p.radius=radius;b.hidden=p.x<-25||p.x>w+25||p.y<-25||p.y>h+25;if(b.hidden)continue;this.positions.set(l.id,p);
         if(l.id==='maw'){const mg=x.createRadialGradient(p.x,p.y,0,p.x,p.y,radius*3);mg.addColorStop(0,'#010209');mg.addColorStop(.5,'#010209');mg.addColorStop(.67,'#8b547376');mg.addColorStop(1,'#51285600');x.fillStyle=mg;x.fillRect(p.x-radius*3,p.y-radius*3,radius*6,radius*6);x.strokeStyle='#9e668d88';x.beginPath();x.ellipse(p.x,p.y,radius*2,radius*.8,-.25,0,TAU);x.stroke();}
         else if(l.rim==='station'){x.save();x.translate(p.x,p.y);x.rotate(Math.PI/4);x.fillStyle='#8199b1';x.strokeStyle='#cbd9de';x.lineWidth=.5;x.fillRect(-radius*.7,-radius*.7,radius*1.4,radius*1.4);x.strokeRect(-radius,-radius,radius*2,radius*2);x.restore();}
         else {g=x.createRadialGradient(p.x,p.y,radius*.75,p.x,p.y,radius*1.5);g.addColorStop(0,'#80bde342');g.addColorStop(.65,'#77aadb0a');g.addColorStop(1,'#77aadb00');x.fillStyle=g;x.fillRect(p.x-radius*1.5,p.y-radius*1.5,radius*3,radius*3);x.drawImage(this.textures.get(l.id),p.x-radius,p.y-radius,radius*2,radius*2);if(seed%7===1&&!this.chart){x.strokeStyle='#b7bfc458';x.lineWidth=2;x.beginPath();x.ellipse(p.x,p.y,radius*1.6,radius*.43,-.28,0,TAU);x.stroke();}}
         if(l.id===this.selected||l.id===current){x.strokeStyle=l.id===this.selected?'#d1b47faa':'#86d4d1a0';x.lineWidth=1;x.setLineDash([2,5]);x.beginPath();x.arc(p.x,p.y,radius+7,0,TAU);x.stroke();x.setLineDash([]);if(l.id===current){x.fillStyle='#86d4d1';x.beginPath();x.moveTo(p.x-3,p.y-radius-14);x.lineTo(p.x+3,p.y-radius-14);x.lineTo(p.x,p.y-radius-9);x.fill();}}
-        const flip=this.width<700&&p.x>this.width-115,dy=({'velthros-moon':10,velthros:-8,rathun:-10,'hosun-prime':8}[l.id]||0);b.style.left=(p.x+(flip?-radius-3:radius+3))+'px';b.style.top=(p.y+dy)+'px';b.style.transform=flip?'translate(-100%,-50%)':'translateY(-50%)';b.style.flexDirection=flip?'row-reverse':'row';b.querySelector('span').style.opacity=this.width<700&&!l.visitedBy&&l.id!==this.selected&&this.zoom<2.1?'0':'1';b.classList.toggle('selected',l.id===this.selected);b.setAttribute('aria-pressed',String(l.id===this.selected));
+
       }
+      this.layoutLabels();
+      x.strokeStyle='#7b9db83d';x.lineWidth=.6;
+      for(const line of this.labelSegments||[]){if(Math.hypot(line.b.x-line.a.x,line.b.y-line.a.y)<18)continue;x.beginPath();x.moveTo(line.a.x,line.a.y);x.lineTo(line.b.x,line.b.y);x.stroke();}
       // Mild vignette keeps overlays legible without hiding the chart.
       g=x.createRadialGradient(w*.5,h*.5,Math.min(w,h)*.25,w*.5,h*.5,Math.max(w,h)*.72);g.addColorStop(0,'#02050c00');g.addColorStop(1,'#02050c99');x.fillStyle=g;x.fillRect(0,0,w,h);
     }
@@ -121,7 +176,7 @@
     reset(){this.zoom=1;this.pan={x:0,y:0};this.target={x:0,y:0};this.selected=null;this.options.onSelect(null);this.draw();}
     select(id){this.selected=id;this.options.onSelect(this.locations.find(l=>l.id===id));this.draw();this.schedule();}
     focus(id){const l=this.locations.find(l=>l.id===id);if(!l)return;const p=coords(l),r=this.chart?0:-.12;this.zoom=Math.max(this.zoom,1.65);this.target={x:-(p.x*Math.cos(r)-p.y*Math.sin(r))+(this.width<700?-50:-140),y:-(p.x*Math.sin(r)+p.y*Math.cos(r))*(this.chart?1:(this.width<700?.78:.59))+80};this.select(id);this.schedule();}
-    changeZoom(factor,anchor){const z=Math.max(MIN_ZOOM,Math.min(5,this.zoom*factor));if(anchor){const p={x:(anchor.x-this.width*.48)/(this.base*this.zoom)-this.pan.x,y:(anchor.y-this.height*.47)/(this.base*this.zoom)-this.pan.y};this.pan.x=(anchor.x-this.width*.48)/(this.base*z)-p.x;this.pan.y=(anchor.y-this.height*.47)/(this.base*z)-p.y;this.target={...this.pan};}if(z===MIN_ZOOM&&this.zoom!==MIN_ZOOM){this.pan={x:0,y:0};this.target={x:0,y:0};}this.zoom=z;this.draw();}
+    changeZoom(factor,anchor){const z=Math.max(MIN_ZOOM,Math.min(5,this.zoom*factor));if(anchor){const p={x:(anchor.x-this.width*.48)/(this.base*this.zoom)-this.pan.x,y:(anchor.y-this.height*.52)/(this.base*this.zoom)-this.pan.y};this.pan.x=(anchor.x-this.width*.48)/(this.base*z)-p.x;this.pan.y=(anchor.y-this.height*.52)/(this.base*z)-p.y;this.target={...this.pan};}if(z===MIN_ZOOM&&this.zoom!==MIN_ZOOM){this.pan={x:0,y:0};this.target={x:0,y:0};}this.zoom=z;this.draw();}
     pointerDown(e){if(e.button>0)return;this.dragDistance=0;this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});if(!e.target.closest('.world-pin,.realm-pin'))this.stage.setPointerCapture(e.pointerId);this.lastPointer={x:e.clientX,y:e.clientY};this.stage.classList.add('dragging');if(this.pointers.size===2){const v=[...this.pointers.values()];this.pinch=Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y);}}
     pointerMove(e){if(!this.pointers.has(e.pointerId))return;const old=this.pointers.get(e.pointerId);this.pointers.set(e.pointerId,{x:e.clientX,y:e.clientY});this.dragDistance+=Math.hypot(e.clientX-old.x,e.clientY-old.y);if(this.pointers.size===2){const v=[...this.pointers.values()],d=Math.hypot(v[0].x-v[1].x,v[0].y-v[1].y);if(this.pinch)this.changeZoom(d/this.pinch);this.pinch=d;return;}const scale=this.base*this.zoom;this.pan.x+=(e.clientX-old.x)/scale;this.pan.y+=(e.clientY-old.y)/scale;this.target={...this.pan};this.draw();}
     pointerUp(e){this.pointers.delete(e.pointerId);if(this.pointers.size<2)this.pinch=null;if(!this.pointers.size)this.stage.classList.remove('dragging');if(this.dragDistance<8&&!e.target.closest('.world-pin,.realm-pin')){const rect=this.stage.getBoundingClientRect(),px=e.clientX-rect.left,py=e.clientY-rect.top;if(this.fullyZoomedOut()&&this.realmPosition&&Math.hypot(this.realmPosition.x-px,this.realmPosition.y-py)<28){this.realmPin.click();return;}let best=null,d=28;for(const [id,p] of this.positions){const dd=Math.hypot(p.x-px,p.y-py);if(dd<d){best=id;d=dd;}}if(best)this.select(best);}}

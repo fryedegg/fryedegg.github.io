@@ -1,0 +1,748 @@
+window.CAMPAIGN_UPGRADES = {
+  "images": {
+    "world:maw": "media/art/041-the-rise-of-the-maw.webp",
+    "person:Cae": "media/upgrades/cae-original.webp",
+    "person:L.E. (Ellie)": "media/upgrades/ellie.webp",
+    "person:Keira": "media/upgrades/keira.webp",
+    "world:achelion": "media/upgrades/achelion.webp",
+    "world:akiton": "media/upgrades/akiton.webp",
+    "world:akora": "media/upgrades/akora.webp",
+    "world:aurelia": "media/upgrades/aurelia.webp",
+    "person:Blue-Sun": "media/upgrades/blue-sun.webp",
+    "world:boruun": "media/upgrades/boruun.webp",
+    "world:caldrithar": "media/upgrades/caldrithar.webp",
+    "person:Chopper": "media/upgrades/chopper.webp",
+    "person:Civet": "media/upgrades/civet.webp",
+    "world:crius": "media/upgrades/crius.webp",
+    "person:Cro original": "media/upgrades/cro-original.webp",
+    "person:C.U.M. Bot": "media/upgrades/cum-bot.webp",
+    "world:drexigar": "media/upgrades/drexigar.webp",
+    "world:dross-meridian": "media/upgrades/dross-meridian.webp",
+    "person:Drundar": "media/upgrades/drundar.webp",
+    "world:echo": "media/upgrades/echo.webp",
+    "person:Ellie": "media/upgrades/ellie.webp",
+    "person:Elo the Thrice": "media/upgrades/elo-the-thrice.webp",
+    "world:eos": "media/upgrades/eos.webp",
+    "world:ghorrak": "media/upgrades/ghorrak.webp",
+    "world:glassend": "media/upgrades/glassend.webp",
+    "person:Grim": "media/upgrades/grim.webp",
+    "world:hosun-prime": "media/upgrades/hosun-prime.webp",
+    "world:ignara": "media/upgrades/ignara.webp",
+    "world:illureth": "media/upgrades/illureth.webp",
+    "world:kaeloras": "media/upgrades/kaeloras.webp",
+    "person:Karnyx": "media/upgrades/karnyx.webp",
+    "world:kresh": "media/upgrades/kresh.webp",
+    "world:leztos": "media/upgrades/leztos.webp",
+    "person:Lorutell Cindella": "media/upgrades/lorutell-cindella.webp",
+    "world:lysavex": "media/upgrades/lysavex.webp",
+    "person:Nicola": "media/upgrades/nicola.webp",
+    "person:Nixx": "media/upgrades/nixx.webp",
+    "world:noctara": "media/upgrades/noctara.webp",
+    "world:nocturna-i": "media/upgrades/nocturna-i.webp",
+    "world:nuldrith": "media/upgrades/nuldrith.webp",
+    "world:nyxara-i": "media/upgrades/nyxara-i.webp",
+    "world:oratoria": "media/upgrades/oratoria.webp",
+    "person:Orlion": "media/upgrades/orlion.webp",
+    "world:rathun": "media/upgrades/rathun.webp",
+    "person:Red Solomon": "media/upgrades/red-solomon.webp",
+    "person:Rin Fortuna": "media/upgrades/rin-fortuna.webp",
+    "person:Saturiba": "media/upgrades/saturiba.webp",
+    "world:skarab-prime": "media/upgrades/skarab-prime.webp",
+    "world:somnara": "media/upgrades/somnara.webp",
+    "world:spanner": "media/upgrades/spanner.webp",
+    "person:Spindel": "media/upgrades/spindel.webp",
+    "person:Spry": "media/upgrades/spry.webp",
+    "person:Sye-tell": "media/upgrades/sye-tell.webp",
+    "person:Talus": "media/upgrades/talus.webp",
+    "person:The Pike Family": "media/upgrades/the-pike-family.webp",
+    "person:The Producers (Celestial Tunnel)": "media/upgrades/the-producers-celestial-tunnel.webp",
+    "person:The Red Hand": "media/upgrades/the-red-hand.webp",
+    "person:The Watchers — Inside the Weave": "media/upgrades/the-watchers-inside-the-weave.webp",
+    "person:The Watchers (Scrying)": "media/upgrades/the-watchers-scrying.webp",
+    "world:threnar": "media/upgrades/threnar.webp",
+    "world:titania": "media/upgrades/titania.webp",
+    "world:tosis": "media/upgrades/tosis.webp",
+    "world:vaereth": "media/upgrades/vaereth.webp",
+    "person:Vantros": "media/upgrades/vantros.webp",
+    "world:veloria": "media/upgrades/veloria.webp",
+    "world:verdantia": "media/upgrades/verdantia.webp",
+    "world:virelia": "media/upgrades/virelia.webp",
+    "world:voga": "media/upgrades/voga.webp",
+    "person:Wrath": "media/upgrades/wrath.webp",
+    "world:xarnis": "media/upgrades/xarnis.webp",
+    "world:xernes-5": "media/upgrades/xernes-5.webp",
+    "world:zephyros": "media/upgrades/zephyros.webp",
+    "faction:The Edgekeepers": "images/locations/scene-bragg-plug-briefing.png",
+    "faction:The Black Sky Imperium (TBS)": "media/upgrades/noctara.webp",
+    "faction:Children of the Black Sky": "media/upgrades/lorutell-cindella.webp",
+    "faction:The Court of Light": "media/art/030-chaddeus-thaddeus-aurelian-twins.webp",
+    "faction:The Fey Courts (broader)": "media/upgrades/oratoria.webp",
+    "faction:The 9 Princes of Akora": "media/upgrades/akora.webp",
+    "faction:The Pike Family": "media/upgrades/the-pike-family.webp",
+    "faction:The Red Hand": "media/upgrades/the-red-hand.webp",
+    "faction:The Maw / The Hollowed One / The Null": "media/art/020-null-operatives-emerging-from-portal.webp",
+    "faction:Corno Spezzato": "media/art/155-corno-spezzato-broken-horn-syndicate.webp",
+    "faction:The Celestial Tunnel / The Pantheon's Production": "media/art/102-the-whisper-with-zelqua-talk-show-set.webp",
+    "faction:Spry / Spindel Network": "media/upgrades/spry.webp"
+  },
+  "art": [
+    {
+      "id": "commission-achelion",
+      "title": "Achelion",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/achelion",
+      "src": "media/upgrades/achelion.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-akiton",
+      "title": "Akiton",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/akiton",
+      "src": "media/upgrades/akiton.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-akora",
+      "title": "Akora",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/akora",
+      "src": "media/upgrades/akora.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-aurelia",
+      "title": "Aurelia",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/aurelia",
+      "src": "media/upgrades/aurelia.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-blue-sun",
+      "title": "Blue-Sun",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/blue-sun",
+      "src": "media/upgrades/blue-sun.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-boruun",
+      "title": "Boruun",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/boruun",
+      "src": "media/upgrades/boruun.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-caldrithar",
+      "title": "Caldrithar",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/caldrithar",
+      "src": "media/upgrades/caldrithar.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-chopper",
+      "title": "Chopper",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/chopper",
+      "src": "media/upgrades/chopper.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-civet",
+      "title": "Civet",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/civet",
+      "src": "media/upgrades/civet.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-crius",
+      "title": "Crius",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/crius",
+      "src": "media/upgrades/crius.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-cro-original",
+      "title": "Cro · Before the Crystal Titan",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/cro-original",
+      "src": "media/upgrades/cro-original.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-cum-bot",
+      "title": "C.U.M. Bot",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/cum-bot",
+      "src": "media/upgrades/cum-bot.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-drexigar",
+      "title": "Drexigar",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/drexigar",
+      "src": "media/upgrades/drexigar.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-dross-meridian",
+      "title": "Dross Meridian",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/dross-meridian",
+      "src": "media/upgrades/dross-meridian.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-drundar",
+      "title": "Drundar",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/drundar",
+      "src": "media/upgrades/drundar.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-echo",
+      "title": "Echo",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/echo",
+      "src": "media/upgrades/echo.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-ellie",
+      "title": "Ellie",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/ellie",
+      "src": "media/upgrades/ellie.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-elo-the-thrice",
+      "title": "Elo the Thrice",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/elo-the-thrice",
+      "src": "media/upgrades/elo-the-thrice.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-eos",
+      "title": "Eos",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/eos",
+      "src": "media/upgrades/eos.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-ghorrak",
+      "title": "Ghorrak",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/ghorrak",
+      "src": "media/upgrades/ghorrak.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-glassend",
+      "title": "Glassend",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/glassend",
+      "src": "media/upgrades/glassend.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-grim",
+      "title": "Grim",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/grim",
+      "src": "media/upgrades/grim.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-hosun-prime",
+      "title": "Hosun Prime",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/hosun-prime",
+      "src": "media/upgrades/hosun-prime.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-ignara",
+      "title": "Ignara",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/ignara",
+      "src": "media/upgrades/ignara.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-illureth",
+      "title": "Illureth",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/illureth",
+      "src": "media/upgrades/illureth.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-kaeloras",
+      "title": "Kaeloras",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/kaeloras",
+      "src": "media/upgrades/kaeloras.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-karnyx",
+      "title": "Karnyx",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/karnyx",
+      "src": "media/upgrades/karnyx.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-keira",
+      "title": "Keira",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/keira",
+      "src": "media/upgrades/keira.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-kresh",
+      "title": "Kresh",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/kresh",
+      "src": "media/upgrades/kresh.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-leztos",
+      "title": "Leztos",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/leztos",
+      "src": "media/upgrades/leztos.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-lorutell-cindella",
+      "title": "Lorutell Cindella",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/lorutell-cindella",
+      "src": "media/upgrades/lorutell-cindella.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-lysavex",
+      "title": "Lysavex",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/lysavex",
+      "src": "media/upgrades/lysavex.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-nicola",
+      "title": "Nicola",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/nicola",
+      "src": "media/upgrades/nicola.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-nixx",
+      "title": "Nixx",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/nixx",
+      "src": "media/upgrades/nixx.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-noctara",
+      "title": "Noctara",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/noctara",
+      "src": "media/upgrades/noctara.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-nocturna-i",
+      "title": "Nocturna",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/nocturna-i",
+      "src": "media/upgrades/nocturna-i.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-nuldrith",
+      "title": "Nuldrith",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/nuldrith",
+      "src": "media/upgrades/nuldrith.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-nyxara-i",
+      "title": "Nyxara",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/nyxara-i",
+      "src": "media/upgrades/nyxara-i.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-oratoria",
+      "title": "Oratoria Prime",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/oratoria",
+      "src": "media/upgrades/oratoria.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-orlion",
+      "title": "Orlion",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/orlion",
+      "src": "media/upgrades/orlion.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-rathun",
+      "title": "Rathun",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/rathun",
+      "src": "media/upgrades/rathun.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-red-solomon",
+      "title": "Red Solomon",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/red-solomon",
+      "src": "media/upgrades/red-solomon.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-rin-fortuna",
+      "title": "Rin Fortuna",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/rin-fortuna",
+      "src": "media/upgrades/rin-fortuna.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-saturiba",
+      "title": "Saturiba",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/saturiba",
+      "src": "media/upgrades/saturiba.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-skarab-prime",
+      "title": "Skarab Prime",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/skarab-prime",
+      "src": "media/upgrades/skarab-prime.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-somnara",
+      "title": "Somnara",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/somnara",
+      "src": "media/upgrades/somnara.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-spanner",
+      "title": "The Spanner",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/spanner",
+      "src": "media/upgrades/spanner.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-spindel",
+      "title": "Spindel",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/spindel",
+      "src": "media/upgrades/spindel.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-spry",
+      "title": "Spry",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/spry",
+      "src": "media/upgrades/spry.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-sye-tell",
+      "title": "Sye-tell",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/sye-tell",
+      "src": "media/upgrades/sye-tell.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-talus",
+      "title": "Talus",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/talus",
+      "src": "media/upgrades/talus.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-the-pike-family",
+      "title": "The Pike Family",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/the-pike-family",
+      "src": "media/upgrades/the-pike-family.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-the-producers-celestial-tunnel",
+      "title": "The Producers (Celestial Tunnel)",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/the-producers-celestial-tunnel",
+      "src": "media/upgrades/the-producers-celestial-tunnel.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-the-red-hand",
+      "title": "The Red Hand",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/the-red-hand",
+      "src": "media/upgrades/the-red-hand.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-the-watchers-inside-the-weave",
+      "title": "The Watchers — Inside the Weave",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/the-watchers-inside-the-weave",
+      "src": "media/upgrades/the-watchers-inside-the-weave.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-the-watchers-scrying",
+      "title": "The Watchers (Scrying)",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/the-watchers-scrying",
+      "src": "media/upgrades/the-watchers-scrying.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-threnar",
+      "title": "Threnar",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/threnar",
+      "src": "media/upgrades/threnar.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-titania",
+      "title": "Titania",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/titania",
+      "src": "media/upgrades/titania.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-tosis",
+      "title": "Tosis",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/tosis",
+      "src": "media/upgrades/tosis.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-vaereth",
+      "title": "Vaereth",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/vaereth",
+      "src": "media/upgrades/vaereth.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-vantros",
+      "title": "Vantros",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/vantros",
+      "src": "media/upgrades/vantros.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-veloria",
+      "title": "Veloria",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/veloria",
+      "src": "media/upgrades/veloria.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-verdantia",
+      "title": "Verdantia",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/verdantia",
+      "src": "media/upgrades/verdantia.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-virelia",
+      "title": "Virelia",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/virelia",
+      "src": "media/upgrades/virelia.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-voga",
+      "title": "Voga",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/voga",
+      "src": "media/upgrades/voga.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-wrath",
+      "title": "Wrath",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/wrath",
+      "src": "media/upgrades/wrath.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-xarnis",
+      "title": "Xarnis",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/xarnis",
+      "src": "media/upgrades/xarnis.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-xernes-5",
+      "title": "Xernes 5",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/xernes-5",
+      "src": "media/upgrades/xernes-5.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "commission-zephyros",
+      "title": "Zephyros",
+      "category": "11 Commissioned illustrations",
+      "source": "Generated illustrations/zephyros",
+      "src": "media/upgrades/zephyros.webp",
+      "video": false,
+      "origin": "Generated interpretation from campaign records or supplied visual references"
+    },
+    {
+      "id": "reference-cae-original",
+      "title": "Cae · Original Moon Elf form",
+      "category": "12 Original crew references",
+      "source": "Campaign owner’s upgrade notes/cae-original",
+      "src": "media/upgrades/cae-original.webp",
+      "video": false,
+      "origin": "Supplied image"
+    },
+    {
+      "id": "reference-original-codex-crew",
+      "title": "Original Oratoria · The Codex Crew",
+      "category": "12 Original crew references",
+      "source": "Campaign owner’s upgrade notes/original-codex-crew",
+      "src": "media/upgrades/original-codex-crew.webp",
+      "video": false,
+      "origin": "Supplied image"
+    },
+    {
+      "id": "reference-keira-reference",
+      "title": "Keira · Supplied character sketch",
+      "category": "12 Original crew references",
+      "source": "Campaign owner’s upgrade notes/keira-reference",
+      "src": "media/upgrades/keira-reference.webp",
+      "video": false,
+      "origin": "Supplied image"
+    },
+    {
+      "id": "reference-grim-reference",
+      "title": "Grim · Supplied character sketch",
+      "category": "12 Original crew references",
+      "source": "Campaign owner’s upgrade notes/grim-reference",
+      "src": "media/upgrades/grim-reference.webp",
+      "video": false,
+      "origin": "Supplied image"
+    }
+  ],
+  "originalCrewPortrait": "media/upgrades/original-codex-crew.webp"
+};
