@@ -7,7 +7,11 @@ Static GitHub Pages website. No build step or framework is required.
 - `index.html`: accessible page shell, search dialog, and persistent audio player.
 - `campaign-data.js`: complete campaign records, separated from interface code.
 - `codex.js`: bridge, dossiers, journal, directory, lore, search, and archive interactions.
-- `galaxy.js`: procedural cinematic canvas map, camera, touch controls, and flight timeline.
+- `galaxy.js`: cinematic map, camera, orbit/pan controls, celestial network, and flight timeline.
+- `galaxy-webgl.js`: Three.js planet meshes, lighting, procedural textures, atmospheres, and rings. The chart remains available when WebGL cannot run.
+- `vendor/`: local Three.js modules and MIT license.
+- `onboard-systems.js` / `.css`: integrated soundboard, investigation board, table workspace, journey tour, discoveries, and dossier themes.
+- `ghost-library.js`: campaign soundboard transcripts and verified recording metadata.
 - `codex.css`: responsive visual system, effects, and reduced-motion rules.
 - `campaign-media.js`: artwork catalog, original recording metadata, and full written recaps.
 - `ghost-waveforms.js`: waveform peaks and durations decoded from the original recordings.
@@ -17,6 +21,8 @@ Static GitHub Pages website. No build step or framework is required.
 - `upgrades.css`: layout repairs, portrait framing, and styles for the new views.
 - `art-upgrade-audit.json`: preserved assets, new illustrations, supplied references, and artwork coverage.
 - `media/ghost/`: the six original MP3 recordings.
+- `media/soundboard/`: 1,680 replacement clips, the 28 Brook/Sen-47 lines, six long recordings, searchable transcripts, and the adaptation audit in JSON and CSV. Sixteen unique fragments omitted from the original index were restored; two additional source files duplicate indexed recordings exactly.
+- `ghost-17x/`: preserved standalone soundboard and all 1,682 original audio files, including the 1,664 indexed clips.
 - `media/recaps/`: original Session 14 and 15 PDFs.
 - `media/art/`: optimized WebP copies and original library videos.
 - `art-audit.json`: the artwork inventory and explicit matches to existing entries.
@@ -25,7 +31,7 @@ Run a local preview with `python -m http.server 8765`, then open http://localhos
 
 ## Adding recordings
 
-Add a recording object to `CAMPAIGN_MEDIA.recordings` and copy its file to `media/ghost/`. Types are `recap`, `rant`, and `line`. Set `session`, `date`, `setting`, and `location` when supported by campaign evidence. Use a mapped planet or landmark ID for location-specific lines; leave `location` null when unconfirmed. Recaps appear alongside the matching flight journal entry. The Ghost archive lists every recording. Add decoded waveform data to `GHOST_WAVEFORMS` using its recording ID; the player also works without waveform data.
+Add a recording object to `CAMPAIGN_MEDIA.recordings` and copy its file to `media/ghost/`. Types are `recap`, `rant`, and `line`. Set `session`, `date`, `setting`, and `location` when supported by campaign evidence. Use a mapped planet or landmark ID for location-specific lines; leave `location` null when unconfirmed. Recaps appear alongside the matching flight journal entry. The Ghost archive lists every recording. The replacement archive in `GHOST_LIBRARY` overrides the six long recordings by ID and adds the short soundboard clips. Include `text`, `category`, and `duration` for new clips, and `chapters` with actual start times for long transcripts. Add waveform `peaks` to the recording metadata, or to `GHOST_WAVEFORMS`; the player works without peaks.
 
 ## Navigation and rendering
 
@@ -37,7 +43,13 @@ The map renders only while mounted and the browser is visible. Effects run at ap
 
 The Celestial Tunnel is a divine plane represented by a diagonal constellation, rather than a planet or an additional orbit. Its stars remain present when zooming; the complete shape and realm link are available in the widest view. Label placement checks the screen edges, other labels, planets, and interface controls, preferring outward positions on the Outer Rim. When space is too crowded, a label is revealed on hover or keyboard focus; the world index always lists every destination.
 
-Previously on (`#previously`) brings a session’s written record and Ghost audio together with the current open threads. Session links such as `#previously/S11` are shareable. The Connections map (`#relationships`) is built from explicit contact, faction, crew, and session records. Each edge includes its source; explicitly uncertain affiliations use dashed lines. Blue Harvest has a dedicated illustrated entry at `#lore/blue-harvest`.
+Previously on (`#previously`) brings a session’s written record and Ghost audio together with the current open threads. Session links such as `#previously/S11` are shareable. The Connections board (`#relationships`) is built from explicit contact, faction, crew, and session records. Cards move by dragging their handles or pressing arrow keys; Shift increases the keyboard step. Recorded strings include their source. Gold strings are personal theories, and question notes are editable. Removing a recorded string changes only the personal board; Restore strings brings it back. Blue Harvest has a dedicated illustrated entry at `#lore/blue-harvest`.
+
+Our journey (`#journey`) moves through every logged session in order. It supports manual steps, a session selector, a timed camera tour, and optional Ghost commentary. The divine-plane stops use the Celestial Tunnel network rather than a planet.
+
+At the table (`#table`) stores a current scene, twelve pinned records, scratch notes, and favorite audio. The investigation board and discoveries share this personal workspace. It is saved in localStorage on this browser/device and can be exported/imported as JSON. It does not edit campaign records or synchronize notes to GitHub. Discoveries record found paperbacks and the complete celestial chart without publishing hiding coordinates.
+
+The soundboard (`#ghost`) searches the full transcript, filters channels and recording types, saves favorites, and pins clips to the table. Long recordings include passage buttons with actual audio offsets. Short clips play individually; continuous play is optional. The 28 new character lines use only Brook or Sen-47 in Ghost’s spoken text, while Rook remains her canonical directory name.
 
 One audio element survives page navigation. Recording cards, waveforms, and the bottom player all control it; playback starts on a user action. Artwork and audio load on demand. All library media remains local to this repository.
 
@@ -53,6 +65,6 @@ DM Mode is an existing client-side display switch, not access control: all stati
 
 ## Verification
 
-The redesign was checked against a complete pre-redesign JSON snapshot: all campaign fields, including DM notes, match exactly. The six MP3s also match the original supplied files by SHA-256. All 171 imported art/video assets, 63 original illustrations, and both written recap PDFs are retained.
+The redesign was checked against a complete pre-redesign JSON snapshot: all campaign fields, including DM notes, match exactly. The six original MP3s match the supplied files by SHA-256 and are retained beside the new takes. Replacement recordings use MiniMax 02 HD, Daegoth, English, American, Robotic Assistant, speed 1, and Angry emotion. Long recordings are joined from the exact paragraph scripts, with passage offsets calculated from the MP3 frames and waveforms decoded from the final audio. All 171 imported art/video assets, 63 original illustrations, and both written recap PDFs are retained.
 
 Browser verification covers desktop and phone layouts, every archive view, deep links, the session timeline, map selection and controls, Ghost filtering, playback across navigation, artwork search/lightboxes, keyboard search, DM display, easter eggs, reduced motion, local asset responses, and JavaScript errors. Public deployment is checked after GitHub Pages finishes publishing.

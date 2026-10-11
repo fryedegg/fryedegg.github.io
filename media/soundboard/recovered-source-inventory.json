@@ -1,0 +1,150 @@
+[
+  {
+    "file": "du01dagoth_du01dagothfollo_000000c1_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_000000c1_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_000000c1_1",
+    "replacementSrc": "media/soundboard/recovered-01.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_0000fb01_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_0000fb01_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_0000fb01_1",
+    "replacementSrc": "media/soundboard/recovered-02.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_000e45af_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_000e45af_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_000e45af_1",
+    "replacementSrc": "media/soundboard/recovered-03.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_001c8387_1.mp3",
+    "duplicateOf": [
+      "du01dagoth_du01dagothfollo_0000008b_1.mp3"
+    ],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_001c8387_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_0000008b_1",
+    "replacementSrc": "media/soundboard/line-0120.mp3",
+    "status": "Exact duplicate of an indexed original"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_0029ce1a_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_0029ce1a_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_0029ce1a_1",
+    "replacementSrc": "media/soundboard/recovered-04.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_002d9a3a_1.mp3",
+    "duplicateOf": [
+      "du01dagoth_du01dagothfollo_000d52a2_1.mp3"
+    ],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_002d9a3a_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_000d52a2_1",
+    "replacementSrc": "media/soundboard/line-0306.mp3",
+    "status": "Exact duplicate of an indexed original"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_002e3c4a_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_002e3c4a_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_002e3c4a_1",
+    "replacementSrc": "media/soundboard/recovered-05.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_003259a8_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_003259a8_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_003259a8_1",
+    "replacementSrc": "media/soundboard/recovered-06.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_003eb0d9_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_003eb0d9_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_003eb0d9_1",
+    "replacementSrc": "media/soundboard/recovered-07.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_003f01ec_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_003f01ec_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_003f01ec_1",
+    "replacementSrc": "media/soundboard/recovered-08.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_003f01ff_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_003f01ff_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_003f01ff_1",
+    "replacementSrc": "media/soundboard/recovered-09.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_00437167_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_00437167_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_00437167_1",
+    "replacementSrc": "media/soundboard/recovered-10.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_0046ecc5_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_0046ecc5_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_0046ecc5_1",
+    "replacementSrc": "media/soundboard/recovered-11.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_0046eccf_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_0046eccf_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_0046eccf_1",
+    "replacementSrc": "media/soundboard/recovered-12.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_007d0a45_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_007d0a45_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_007d0a45_1",
+    "replacementSrc": "media/soundboard/recovered-13.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_007f417d_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_007f417d_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_007f417d_1",
+    "replacementSrc": "media/soundboard/recovered-14.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_00919c36_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_00919c36_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_00919c36_1",
+    "replacementSrc": "media/soundboard/recovered-15.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  },
+  {
+    "file": "du01dagoth_du01dagothfollo_00919c37_1.mp3",
+    "duplicateOf": [],
+    "originalSrc": "ghost-17x/Daeghost/du01dagoth_du01dagothfollo_00919c37_1.mp3",
+    "clip": "du01dagoth_du01dagothfollo_00919c37_1",
+    "replacementSrc": "media/soundboard/recovered-16.mp3",
+    "status": "Recovered and recorded with the requested preset"
+  }
+]
