@@ -1407,34 +1407,34 @@ window.CAMPAIGN_MEDIA = {
       "id": "aelyn",
       "title": "Aelyn, Aelyn, I need you…",
       "kind": "rant",
-      "session": null,
-      "date": null,
+      "session": 11,
+      "date": "August 2, 2026",
       "src": "media/ghost/aelyn.mp3",
       "original": "Ugggghhh_Aelyn_Aelyn_I_need_yo_Daegoth_MiniMax_02_HD_01a06d57-24a5-73e3-b882-e0b85053a171.mp3",
-      "location": null,
-      "setting": "Location not yet confirmed"
+      "location": "celestial-tunnel",
+      "setting": "Session 11 · A Day With Doc · Celestial Tunnel"
     },
     {
       "id": "proximity",
       "title": "Proximity… Aelyn…",
       "kind": "line",
-      "session": null,
-      "date": null,
+      "session": 11,
+      "date": "August 2, 2026",
       "src": "media/ghost/proximity.mp3",
       "original": "NNnnnnnahhhhgggg_Proximity_Ale_Daegoth_MiniMax_02_HD_01a00af3-f6b2-77ba-9472-1fcc8f39ec6c.mp3",
-      "location": null,
-      "setting": "Location not yet confirmed"
+      "location": "celestial-tunnel",
+      "setting": "Session 11 · A Day With Doc · Celestial Tunnel"
     },
     {
       "id": "killua",
       "title": "Killua, remember that one time…",
       "kind": "line",
-      "session": null,
-      "date": null,
+      "session": 11,
+      "date": "August 2, 2026",
       "src": "media/ghost/killua.mp3",
       "original": "Killua_remember_that_one_time_Daegoth_MiniMax_02_HD_019fe272-157c-7e0d-abd2-104e5e344a9d.mp3",
-      "location": null,
-      "setting": "Location not yet confirmed"
+      "location": "celestial-tunnel",
+      "setting": "Session 11 · A Day With Doc · Celestial Tunnel"
     }
   ],
   "recaps": [
