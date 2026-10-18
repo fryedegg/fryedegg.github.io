@@ -284,7 +284,7 @@ window.CAMPAIGN_DATA = {
       "angle": 210,
       "radius": 540,
       "subtitle": "Cybernetic Refuge",
-      "desc": "<strong>Cybernetic refuge for the broken and brilliant.</strong> Bodies are optional. Minds run in mesh. Flesh here is just another upgrade. <strong>Sessions 14–15:</strong> BBC repairs at Port Vesper, the journey to Hymfall, Flint’s ascension, and Rook’s arrival. Chromehymn, Port Vesper, and the temple have their own entries below.",
+      "desc": "<strong>Cybernetic refuge for the broken and brilliant.</strong> Bodies are optional. Minds run in mesh. Flesh here is just another upgrade. <strong>Sessions 14–15:</strong> BBC repairs at Port Vesper, the journey to Hymfall, Flint’s ascension, and Rook’s arrival. Chromehymn, Port Vesper, and the temple have their own entries below.<p><strong>Chromehymn shopping circuit:</strong> six established equipment shops and the Nocturne 13 Velvet Counter are recorded below. <strong>Session 16:</strong> the party fought Melthrax at Nocturne 13; the supplied recap records GHOST-17X’s death and Lor’s survival.</p>",
       "image": "media/art/108-chromehymn-planetary-establishing.webp",
       "visitedBy": "c2",
       "contacts": [
@@ -347,6 +347,97 @@ window.CAMPAIGN_DATA = {
             "label": "Hymfall"
           },
           "faction": "friendly"
+        },
+        {
+          "name": "Vexa Nullbright",
+          "image": "media/art/139-vexa-nullbright-saint-circuit-salvage.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "Saint Circuit Salvage",
+          "desc": "Dockside machinery, ship modules, and equipment with another life left in it. <a href=\"#shop/saint\">Browse Saint Circuit Salvage inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Dr. Silt Mercy",
+          "image": "media/art/145-dr-silt-mercy-the-mercy-stack.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "The Mercy Stack",
+          "desc": "Medical supplies, familiar equipment, and sealed implant orders. <a href=\"#shop/mercy\">Browse The Mercy Stack inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Choir-of-Three",
+          "image": "media/art/149-choir-of-three-three-mouths-curios.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "Three Mouths Curios",
+          "desc": "Occult instruments, discreet conveniences, and appalling little luxuries. <a href=\"#shop/curios\">Browse Three Mouths Curios inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Kessa Brasswake",
+          "image": "media/art/143-kessa-brasswake-the-last-argument.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "The Last Argument",
+          "desc": "Precision weapons, trick ammunition, and grenade payloads. <a href=\"#shop/weapons\">Browse The Last Argument inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Tarn Nine-Stitches",
+          "image": "media/art/141-tarn-nine-stitches-soft-target.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "Soft Target",
+          "desc": "Armor, defensive systems, and equipment for standing between trouble and friends. <a href=\"#shop/armor\">Browse Soft Target inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Iri Vell",
+          "image": "media/art/147-iri-vell-hex-appeal.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "Hex Appeal",
+          "desc": "Casting foci, spell crystals, and P.L.U.G. cartridges. <a href=\"#shop/magic\">Browse Hex Appeal inventory ↗</a>",
+          "location": {
+            "id": "chromehymn",
+            "label": "Chromehymn · Straleon"
+          }
+        },
+        {
+          "name": "Velvet Vial",
+          "image": "media/art/157-velvet-vial-dose-merchant.webp",
+          "stance": "neutral",
+          "crew": "c2",
+          "kind": "Shopkeeper",
+          "role": "Nocturne 13 — Velvet Counter",
+          "desc": "Sealed doses. Read the label before pretending you are indestructible. <a href=\"#shop/club\">Browse Nocturne 13 — Velvet Counter inventory ↗</a>",
+          "location": {
+            "id": "nocturne-13",
+            "label": "Nocturne 13 · Straleon"
+          }
         }
       ]
     },
@@ -1108,6 +1199,24 @@ window.CAMPAIGN_DATA = {
         "Ghost calls Rook “Brook” and the proposed meeting venue “Heartburn 17”; these are preserved as his unreliable narration.",
         "A technomancer meeting is the next lead.",
         "Ghost wanted a new hat. Ghost did not get a new hat."
+      ]
+    },
+    {
+      "num": "S16",
+      "crew": "c2",
+      "title": "Leather, Latex & Legion",
+      "where": {
+        "id": "straleon",
+        "label": "Nocturne 13 · Chromehymn"
+      },
+      "summary": "At <strong>Nocturne 13</strong>, the audience with Johnny Silver Hog ended when 5p0r3 displayed the magebane. Johnny arranged the party for execution, but a Maw portal opened and <strong>Melthrax, the Unfather</strong>, ripped Sir Tiny in half. Melthrax’s assault killed <strong>GHOST-17X</strong>. The surviving party fought back; Asra defeated the Unfather and 5p0r3 saved Lor.",
+      "moments": [
+        "GHOST-17X’s firsthand account ends at his death; subsequent events are explicitly reconstructed.",
+        "Necrotic energy healed Melthrax. His silence field prevented Asra from speaking her spell’s words.",
+        "Lor summoned Eidolon Vale; 5p0r3’s Spore Lock exposed a vulnerability to radiant damage.",
+        "Johnny unleashed a 9th-level Sunbeam. Lor tethered him, and Rook hauled him into the melee.",
+        "Lor fell unconscious and suffered two failed death saves. Asra defeated Melthrax; 5p0r3 healed Lor.",
+        "Melthrax’s parting message: “My death is meaningless, for we are legion.” Johnny’s final fate is not recorded."
       ]
     }
   ],
@@ -2545,7 +2654,7 @@ window.CAMPAIGN_DATA = {
       "name": "Nocturne 13",
       "parent": "straleon",
       "image": "media/art/153-nocturne-13-underground-nightclub.webp",
-      "desc": "Underground nightclub in the Straleon art library. Ghost calls the planned technomancer meeting place “Heartburn 17” in his recap; that nickname has not been treated as a confirmed venue name.",
+      "desc": "Underground nightclub in the Straleon art library. Ghost calls the planned technomancer meeting place “Heartburn 17” in his recap; that nickname has not been treated as a confirmed venue name.<p><strong>Session 16, October 11, 2026:</strong> the party met Johnny Silver Hog, then faced Melthrax, the Unfather. Sir Tiny was ripped in half and GHOST-17X was killed. Asra defeated Melthrax, and 5p0r3 brought Lor back from the brink. The source recap spells the venue “Noturne 13”; its original wording is preserved in the journal.</p>",
       "gallery": [
         151,
         153,
