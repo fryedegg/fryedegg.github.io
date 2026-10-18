@@ -152,12 +152,7 @@ window.CAMPAIGN_DATA = {
       "radius": 280,
       "subtitle": "The Masked Court · Court of Mirrors",
       "desc": "A <strong>kaleidoscopic sphere</strong> of shifting masks, mirrored realities, and endless illusion. Nothing you see is real. <em>But it matters anyway.</em>",
-      "deity": {
-        "name": "The Thirteenth · REDACTED",
-        "domain": "God of Hunger · Unmaking"
-      },
-      "court": "The Masked Court · Court of Mirrors",
-      "dmNotes": "Illureth's ties to the Thirteenth (the Maw) are <strong>not public knowledge.</strong> The Masked Court denies, hides, and reflects this connection. The deity field above shows the locked canon — but to most of the galaxy, the Masked Court is officially a court of \"illusion and self-invention,\" nothing more. Reveal slowly."
+      "court": "The Masked Court · Court of Mirrors"
     },
     {
       "id": "eos",
@@ -468,8 +463,7 @@ window.CAMPAIGN_DATA = {
         "Edgekeepers · allied",
         "Court of Light · HUNTING",
         "Null incursion sites"
-      ],
-      "dmNotes": "Survivors in Glassend square reported losing loved ones, then blinking and being unsure that person had ever existed — Maw un-naming. Lor's neck mark received during this event."
+      ]
     },
     {
       "id": "velthros-moon",
@@ -859,8 +853,7 @@ window.CAMPAIGN_DATA = {
       "factions": [
         "Faldrick administration",
         "Unknown observers · scrying"
-      ],
-      "dmNotes": "The \"broadcast company\" watching the party operates from a ship located inside the Weave itself. They are framing the party's adventures as content. This thread connects to <strong>Kah'ryn</strong> (the lesser god of Suffering / Recursion / Narrative Loops). Revealed in full S11–12 — Kah'ryn is now dead by the Hollowed One's hand."
+      ]
     }
   ],
   "VOID": {
@@ -868,8 +861,7 @@ window.CAMPAIGN_DATA = {
     "name": "Mawward Unknown",
     "rim": "void",
     "subtitle": "The Cage of the Thirteenth",
-    "desc": "A wound in space at the edge of the known galaxy. <strong>Not a place — an absence.</strong> The cage-realm built by the Twelve Primordials to imprison the Thirteenth, the Primordial of Entropy. Light, sound, names, and history go to die in its pull.<br><br>Old maps mark it only as a warning. New maps don't mark it at all.",
-    "dmNotes": "The Maw. Bragg Mentan's lore: the Twelve broke pieces of themselves into Veilshards to chain their devouring brother here. The <strong>First Hollow</strong> (formerly the Warden of Silence) opens wounds from the inside; the <strong>Null</strong> march through her tears. Lor's neck mark constantly broadcasts her location to the Hollowed One. The Mawbound Shard is the thirteenth — entropy's own core, nailed into the wound."
+    "desc": "A wound in space at the edge of the known galaxy. <strong>Not a place — an absence.</strong> The cage-realm built by the Twelve Primordials to imprison the Thirteenth, the Primordial of Entropy. Light, sound, names, and history go to die in its pull.<br><br>Old maps mark it only as a warning. New maps don't mark it at all."
   },
   "SESSIONS": [
     {
@@ -886,8 +878,7 @@ window.CAMPAIGN_DATA = {
         "Lor's wife <strong>Ellie</strong> — The Codex Crew's AI, originally bodiless until the crew built her a frame and bound her soul to it with the <strong>Imaginarium</strong> veilshard — is dead, killed by Cro mid-Shattering. The Imaginarium has since moved from Ellie's body to Lor. Lor has spent two years curled around Ellie's body, jacked into the Codex replaying her memories.",
         "A failed jump. Skill challenges restart the Codex.",
         "Arrival at the Dusty Star tavern in <strong>Glassend</strong>. Vale greets the party warmly. Rex behind the bar. Pip the trainee archer."
-      ],
-      "dmOnly": "Mid-drift, the Hollowed One stepped through the weave and choked Lor's shifter form. Lor felt herself becoming a husk. Cae severed the connection just in time. Lor's neck mark received here. The Luminous Engine's prime function is to <strong>record with safeguards never to forget</strong> — it still knows who Lor is."
+      ]
     },
     {
       "num": "S1",
@@ -903,8 +894,7 @@ window.CAMPAIGN_DATA = {
         "The shadow soldiers retreat through the rift. The Veil Titan Dragon peels away into the desolate wastes of Velthros — <strong>still out there.</strong>",
         "Killua refuses to drag a downed 5p0r3 to safety, choosing violence instead.",
         "Allies gained: Rex, Vale. \"Lost\": Yarrow Salt."
-      ],
-      "dmOnly": "Glassend bystanders begin telling each other about loved ones they've lost in the attack — then blink, unsure that person ever existed. <strong>The Maw un-names.</strong> The shadow soldiers leave no bodies, no salvage — uniforms collapse like shed skins. They are <strong>Null.</strong>"
+      ]
     },
     {
       "num": "S2",
@@ -920,8 +910,7 @@ window.CAMPAIGN_DATA = {
         "Asra (Killua's sister) once again torments Rex the tavern keeper.",
         "Vale concedes the rifts open onto a place opposed to ours — <em>\"where growth rots and meaning thins.\"</em> The shadow soldiers are <strong>Null,</strong> hollow things that walk out of it.",
         "Vale points the party at <strong>Bragg Mentan</strong> of the Edgekeepers — find him after the FTL is installed."
-      ],
-      "dmOnly": "Moon base cameras captured the Codex ship during the heist. The Fey Court now has the footage. Heat is rising."
+      ]
     },
     {
       "num": "S3",
@@ -936,8 +925,7 @@ window.CAMPAIGN_DATA = {
         "A Zone of Truth catches multiple party members and unravels the lie. The twins attack.",
         "Lor remembers a stash of <strong>magebane</strong> from the Codex Crew's boons, coats an arrow, and strips Chaddeus of his magic.",
         "A familiar voice in the party's minds. A figure crashes down to lend aid."
-      ],
-      "dmOnly": "The figure is <strong>Vale, in her true Eidolon form.</strong> She is bound to the Parallax Engine — power vibe: space-stone / tesseract."
+      ]
     },
     {
       "num": "S4",
@@ -955,8 +943,7 @@ window.CAMPAIGN_DATA = {
         "Vale reveals her Eidolon form to the party openly.",
         "Aelyn/5p0r3 trick <strong>Yarrow into \"working\" for them</strong> — locked in the brig, fed sandwiches.",
         "Vale gives the party Bragg's coordinates in Sector 5. Mentions a potential Eidolon candidate to help resurrect Ellie."
-      ],
-      "dmOnly": "The Court of Light will know the twins were not successful. The party's heat with the Court is now critical."
+      ]
     },
     {
       "num": "S5",
@@ -974,8 +961,7 @@ window.CAMPAIGN_DATA = {
         "Bragg confirms <strong>Karnyx is an Eidolon</strong> fighting on the wrong side, crowned by the Leviathan Crown at the bottom of Achelion's trench.",
         "To remove the Hollowed One's mark from Lor: <strong>magebane.</strong>",
         "Bragg pledges boons and further intel."
-      ],
-      "dmOnly": ""
+      ]
     },
     {
       "num": "S6",
@@ -994,8 +980,7 @@ window.CAMPAIGN_DATA = {
         "Forklift commandeered for the trip to the caverns. Repeatedly stuck in fens. Takes longer than walking.",
         "Killua spots a <strong>scrying eye</strong> following the party. Destroys it with a radiant lance.",
         "Phoenix Veilbeast slain — twice (rose from ashes, struck back, slain again). Reverts to a normal phoenix egg. <strong>Three more scrying eyes</strong> appear afterward."
-      ],
-      "dmOnly": "Just before the Phoenix fight, Flint counter-scryed the watcher and was projected through the weave into <strong>a busy control room</strong> — people in headset mics, dozens of monitors broadcasting adventures across the galaxy. One monitor showed his own party. Audio: <em>\"They are perfect, they will be stars.\"</em> 5p0r3 + Flint enhanced the memory: the room is <strong>on a ship located inside the Weave itself.</strong> The watchers are framing the campaign as content. Ties to <strong>Kah'ryn</strong>, the lesser god of Suffering / Recursion / Narrative Loops."
+      ]
     },
     {
       "num": "S7",
@@ -1011,8 +996,7 @@ window.CAMPAIGN_DATA = {
         "Inside: a corrupted crystal-grove guardian, <strong>Gleam Feather.</strong> Once Killua spots the central crystal as the true weakness, the fight ends fast. Gleam Feather deems the party worthy.",
         "5p0r3 connects directly to the grove's mycelium and pinpoints <strong>three magebane nodules.</strong> Harvested.",
         "The party returns to town to meet with Lord Faldrick."
-      ],
-      "dmOnly": ""
+      ]
     },
     {
       "num": "S8",
@@ -1029,8 +1013,7 @@ window.CAMPAIGN_DATA = {
         "<strong>Killua</strong> spends the full 4 days on a <strong>banking-hack rig.</strong> With nearly the whole party assisting, two breakthroughs: the intergalactic transponder is on the network, and the channels to the banking systems are mapped. Firewalls and the extraction algorithm still TBD — a few more sessions and the rig should work.",
         "Exiting FTL, Aelyn spots a <strong>bend of light</strong> dead ahead. A vessel bearing the <strong>Corno Spezzato</strong> insignia decloaks and EMPs the BBC. All systems disabled. <strong>Two breach pods punch into the BBC on two different decks.</strong>",
         "The capo on the bridge identifies as Corno Spezzato — here to collect a protection fee for the <strong>Hog Father</strong>, who controls this sector. Demand: <strong>80% of the crew's most recent take,</strong> or they take it by force. <strong>Lor chose violence.</strong>"
-      ],
-      "dmOnly": "Corno Spezzato is a regional crime syndicate working a protection racket across this stretch of the Outer Rim. The Hog Father is a known boss-name. Killing the boarding crew without negotiation = inheriting a war with the syndicate, and putting a name and target on HOC.2a in the process."
+      ]
     },
     {
       "num": "S9–10",
@@ -1045,8 +1028,7 @@ window.CAMPAIGN_DATA = {
         "Aelyn lands a gun attack for <strong>3 hull damage</strong> before the pirate ship raises shields.",
         "5p0r3's new iron \"slave\" poison-blasts two of its own compatriots.",
         "Ends with Flint locking the cockpit exit down to Deck 2."
-      ],
-      "dmOnly": ""
+      ]
     },
     {
       "num": "S11",
@@ -1064,8 +1046,7 @@ window.CAMPAIGN_DATA = {
         "A fan's sponsor box gives Killua a Charisma-boosting glamour — half-shirt, daisy dukes, confidence through the roof. Signed <strong>\"Y.S. ;)\"</strong>",
         "Vay'hel's cottage tour: the <strong>ceramic frog with a temporal void space in its butt</strong>; the outhouse is the only camera-free zone.",
         "Something about this place <strong>awakens something in Ghost</strong> — he begins spurting obscenities and nonsense with no reasoning. One to watch."
-      ],
-      "dmOnly": "The abduction is the payoff of the S6 control-room seed — same Celestial voices, same polling language. Planted S6, delivered S11."
+      ]
     },
     {
       "num": "S12",
@@ -1081,8 +1062,7 @@ window.CAMPAIGN_DATA = {
         "Parting words to Lor: <em>\"I still plan to reunite with you and the other 11. See you soon.\"</em> A wink, and it slinks into shadow.",
         "A floating room of light appears — panicked Celestial voices within. A tall shadowy figure enters it. <strong>All sound stops as the walls are painted with blood.</strong>",
         "Kah'ryn's death drops the binding runes; <strong>Vay'hel's crystal of plane shift activates</strong> and the party absconds to the BBC."
-      ],
-      "dmOnly": "Canon per the 8-23-26 rulings: the base being was female (Bragg's \"she\" stands as history); the entity's own form is non-binary — it/they; it is <strong>literally mouthless</strong> and speaks only by wearing captured souls that had mouths. It did not kill or un-name Crovil — <strong>Lor and Ellie did</strong>, and his soul came to it afterward because the Shattering broke the route the dead take. Its arsenal of forms is a population, not a trophy case."
+      ]
     },
     {
       "num": "S13",
@@ -1096,8 +1076,7 @@ window.CAMPAIGN_DATA = {
       "moments": [
         "A barrel labelled <strong>\"MISC\"</strong> is ignited mid-fight and turns out to be <strong>arcanite</strong> — nearly blowing a hole in the ship.",
         "Ends on the final pirate falling — <strong>warning klaxons still ringing, the hull badly damaged</strong> from the arcanite blast."
-      ],
-      "dmOnly": "The enemy pirate vessel is still out there — 10 life forms as of the S9–10 scan, shields raised. Corno Spezzato's response to two destroyed boarding crews is pending."
+      ]
     },
     {
       "num": "S14",
@@ -1113,8 +1092,7 @@ window.CAMPAIGN_DATA = {
         "Ghost received communion through the Radiant Tabernacle; Elo the Thrice received the data sacrament.",
         "The Missing Chapter, preserved in the Hood of Wisdom, was restored to Flint. He ascended and remained with the Lux Codicants.",
         "Saturiba is missing, taken by Fey Court agents. Ghost’s synchronization can reunite Flint and the party."
-      ],
-      "dmOnly": ""
+      ]
     },
     {
       "num": "S15",
@@ -1130,8 +1108,7 @@ window.CAMPAIGN_DATA = {
         "Ghost calls Rook “Brook” and the proposed meeting venue “Heartburn 17”; these are preserved as his unreliable narration.",
         "A technomancer meeting is the next lead.",
         "Ghost wanted a new hat. Ghost did not get a new hat."
-      ],
-      "dmOnly": ""
+      ]
     }
   ],
   "C1_LOG": [
@@ -1151,8 +1128,7 @@ window.CAMPAIGN_DATA = {
         "Through <strong>Rin Fortuna</strong> on Akora they reached <strong>Wrath.</strong> Then handed Wrath over to the <strong>Pike Family</strong> on Leztos to settle a debt.",
         "Docked the Codex at <strong>The Spanner</strong> for repairs while ducking Imperial pursuit. Killed three Imperial operatives there. Met <strong>Spry</strong> (only ever a hologram — held captive by the Pikes) and his right-hand man <strong>Spindel</strong> (a clone — <em>Spindel is legion</em>).",
         "Spry sent them to answer a distress call on <strong>Gray Haven.</strong> Met <strong>Lord Faldrick</strong> there. Payment: trade, not creds."
-      ],
-      "dmOnly": ""
+      ]
     }
   ],
   "HOOKS": [
@@ -2003,31 +1979,8 @@ window.CAMPAIGN_DATA = {
       "crew": "c2"
     }
   ],
-  "POI_DM": [
-    {
-      "name": "The Watchers — Inside the Weave",
-      "crew": "c2",
-      "stance": "unknown",
-      "kind": "Broadcast Operation",
-      "location": null,
-      "role": "A control room aboard a ship located inside the Weave itself",
-      "desc": "Flint counter-scryed the watchers and saw a busy room of headset-wearing operators in front of dozens of monitors broadcasting adventures across the galaxy. One monitor showed his own party. Audio: <em>\"They are perfect, they will be stars.\"</em> Confirmed tied to <strong>Kah'ryn,</strong> goddess of Suffering / Recursion / Narrative Loops and showrunner of <em>A Day With Doc</em> — <strong>now dead by the Hollowed One's hand (S12).</strong>"
-    }
-  ],
-  "HOOKS_DM": [
-    {
-      "crew": "c2",
-      "urgency": "normal",
-      "kind": "lore",
-      "title": "The Broadcast Operation — Seed Delivered",
-      "giver": null,
-      "location": {
-        "id": "gray-haven",
-        "label": "Gray Haven (counter-scry)"
-      },
-      "desc": "<strong>Planted S6, paid off S11</strong> — the same Celestial voices and polling language abducted four PCs onto <em>A Day With Doc</em>. Kah'ryn (the showrunner) is dead by the Hollowed One's hand; the producers' room was painted with blood in S12. <strong>Status of the production, and of the Celestial Tunnel itself, is now an open question.</strong>"
-    }
-  ],
+  "POI_DM": [],
+  "HOOKS_DM": [],
   "CREW": [
     {
       "name": "Lor",
@@ -2347,203 +2300,7 @@ window.CAMPAIGN_DATA = {
       "caption": "Tenth panel from Bragg's monologue. Caption pending — update via the data file when you confirm the scene."
     }
   ],
-  "HEAT": [
-    {
-      "category": "faction",
-      "name": "Court of Light",
-      "level": "crit",
-      "clock": {
-        "current": 6,
-        "max": 6
-      },
-      "desc": "<strong>CRITICAL.</strong> The party killed two High Adjudicators (Chaddeus and Thaddeus) in Glassend. The Court will know they failed. A reckoning is coming.",
-      "trigger": "<strong>Next escalation:</strong> A named retaliation force dispatched."
-    },
-    {
-      "category": "faction",
-      "name": "Corno Spezzato",
-      "level": "hot",
-      "clock": {
-        "current": 4,
-        "max": 6
-      },
-      "desc": "Pirate syndicate. The party chose violence on the boarding capo of <strong>The Hog Father</strong> in S5. Defeated the boarding crew without negotiation. The syndicate now has a name and a target.",
-      "trigger": "<strong>Next escalation:</strong> Bounty placed; sector-wide tag on the Codex."
-    },
-    {
-      "category": "faction",
-      "name": "Fey Court (General)",
-      "level": "hot",
-      "clock": {
-        "current": 4,
-        "max": 6
-      },
-      "desc": "Moon base cameras caught the Codex during the FTL heist. Two enforcers dead. The Court is hunting.",
-      "trigger": "<strong>Next escalation:</strong> Standing bounty across Inner Rim ports."
-    },
-    {
-      "category": "faction",
-      "name": "Edgekeepers",
-      "level": "cool",
-      "clock": {
-        "current": 5,
-        "max": 6
-      },
-      "desc": "ALLIED. Bragg Mentan delivered the lore dump and pledged boons. Z Kint vouched. Dr. Ilex Vor installed P.L.U.G. implants.",
-      "trigger": "<strong>Next escalation up:</strong> Field a node in the Resonance Lattice."
-    },
-    {
-      "category": "faction",
-      "name": "Pike Family",
-      "level": "warm",
-      "clock": {
-        "current": 3,
-        "max": 6
-      },
-      "desc": "Crime syndicate on Leztos. Hold Spry captive. The Codex Crew handed Wrath over to settle a debt — that history follows HOC.2a.",
-      "trigger": "<strong>Next escalation:</strong> Pike contract on the Codex."
-    },
-    {
-      "category": "faction",
-      "name": "Black Sky Imperium",
-      "level": "warm",
-      "clock": {
-        "current": 2,
-        "max": 6
-      },
-      "desc": "Destroyed Hosun Prime to bury the Lorutell Cindella experiments. Sent Talus after the Codex Crew (dead now). Red Solomon still active.",
-      "trigger": "<strong>Next escalation:</strong> Imperial intelligence flags HOC.2a as Codex Crew successors."
-    },
-    {
-      "category": "null",
-      "name": "Null Attention",
-      "level": "void",
-      "clock": {
-        "current": 3,
-        "max": 8
-      },
-      "desc": "Rises with cores touched, seeds slotted, gates approached, named figures un-named. The Hollowed One <strong>already marked Lor</strong> in S0. Glassend names erased after S1. Lor publicly outed as an Eidolon by Bragg in S5 — the broadcast operation saw it.",
-      "trigger": "<strong>At full clock:</strong> Silence storm + Null commander dispatched."
-    },
-    {
-      "category": "null",
-      "name": "The Maw — Proximity",
-      "level": "void",
-      "clock": {
-        "current": 2,
-        "max": 8
-      },
-      "desc": "Interior Veil wounds widen. The First Hollow waits at the far Rim. Each rite, each core, each name — the lattice trembles a little more.",
-      "trigger": "<strong>At full clock:</strong> A city un-names itself. The omen pays off."
-    },
-    {
-      "category": "scar",
-      "name": "Lor — Hollowed One's Mark",
-      "level": "crit",
-      "clock": {
-        "current": 1,
-        "max": 1
-      },
-      "desc": "Permanent mark on her neck from S0 mid-drift. Tethers her location to the Hollowed One. <strong>Magebane</strong> is the only known counter — three potions brewed; needs Chromehymn technomancers on Straleon to apply.",
-      "trigger": "<strong>While unmarked:</strong> She is found wherever she goes."
-    },
-    {
-      "category": "scar",
-      "name": "Killua",
-      "level": "cool",
-      "clock": {
-        "current": 0,
-        "max": 4
-      },
-      "desc": "No active scars. Echo Resonance feature trained.",
-      "trigger": ""
-    },
-    {
-      "category": "scar",
-      "name": "Aelyn Vox",
-      "level": "cool",
-      "clock": {
-        "current": 0,
-        "max": 4
-      },
-      "desc": "No active scars. Bond with L.E. + GHOST-17X holding stable.",
-      "trigger": ""
-    },
-    {
-      "category": "scar",
-      "name": "Flint D. McCoy",
-      "level": "cool",
-      "clock": {
-        "current": 0,
-        "max": 4
-      },
-      "desc": "No active scars.",
-      "trigger": ""
-    },
-    {
-      "category": "scar",
-      "name": "5p0r3",
-      "level": "cool",
-      "clock": {
-        "current": 0,
-        "max": 4
-      },
-      "desc": "No active scars. Mycelium network stable.",
-      "trigger": ""
-    },
-    {
-      "category": "memory",
-      "name": "Glassend — Names Lost",
-      "level": "hot",
-      "clock": {
-        "current": 4,
-        "max": 6
-      },
-      "desc": "After the S1 attack, Glassend bystanders blinked away the memory of loved ones — unsure those people had ever existed. The Maw un-named.",
-      "trigger": "<strong>Next tick:</strong> A landmark (street, statue, family) erased."
-    },
-    {
-      "category": "memory",
-      "name": "Hosun Prime — Erased",
-      "level": "crit",
-      "clock": {
-        "current": 6,
-        "max": 6
-      },
-      "desc": "TBS destroyed the planet to bury the Lorutell Cindella program. Survivors scattered. Records purged. The Codex Crew witnessed.",
-      "trigger": "<strong>Locked.</strong> What was, no longer is."
-    },
-    {
-      "category": "omen",
-      "name": "Silence Devours a City",
-      "seen": true,
-      "desc": "Glassend square — bystanders forgot loved ones mid-conversation. <strong>Partial.</strong> The full omen pays off when an entire city un-names itself."
-    },
-    {
-      "category": "omen",
-      "name": "Dead Refuse Their Names",
-      "seen": false,
-      "desc": "Threnar omen. Watch for the dead disowning their grave-names. The First Hollow un-names."
-    },
-    {
-      "category": "omen",
-      "name": "River Runs Backward",
-      "seen": false,
-      "desc": "Velthros omen. Tied to the Engine Seed."
-    },
-    {
-      "category": "omen",
-      "name": "Dreaming Moon Splits",
-      "seen": false,
-      "desc": "Cosmic omen. Watch the lunar cycle around any major rite."
-    },
-    {
-      "category": "omen",
-      "name": "God Born Screaming",
-      "seen": false,
-      "desc": "Birth of a new prime — or the return of one. Listen for the scream."
-    }
-  ],
+  "HEAT": [],
   "FACTIONS": [
     {
       "name": "The Edgekeepers",
