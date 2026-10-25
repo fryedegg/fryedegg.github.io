@@ -1,16 +1,16 @@
 /* Shared campaign state. Passwords and write permissions are checked by the service. */
 (() => {
   'use strict';
-  const PROD='https://shattering-campaign-service.duskytiger2.chatgpt.site';
+  const PROD='https://shattering-campaign-service.marcjulianogmail-com.chatgpt.site';
   const local=['localhost','127.0.0.1'].includes(location.hostname);
   const API=local?'http://127.0.0.1:5173':PROD;
   const SESSION='shattering-access-v1',listeners=new Set(),pending=new Map();
-  let documents={},role='public',name='Visitor',online=false,loading=false,session=null,refreshing=null,generation=0;
+  let documents={},role='public',name='Visitor',online=false,loading=false,session=null,refreshing=null,generation=0,recapTicket=null;
   try {session=JSON.parse(sessionStorage.getItem(SESSION)||'null');if(session?.expires<Date.now())session=null;}catch{}
   const copy=v=>v===undefined?undefined:structuredClone(v);
   const emit=detail=>{for(const fn of [...listeners]){try{fn(detail);}catch(error){console.error('Campaign listener',error);}}updateAccess();};
   function persist(){try{if(session)sessionStorage.setItem(SESSION,JSON.stringify(session));else sessionStorage.removeItem(SESSION);}catch{}}
-  function clearAuth(){generation++;session=null;role='public';name='Visitor';for(const key of Object.keys(documents))if(key.startsWith('dm:')||key==='intake'||key==='canon')delete documents[key];persist();emit({type:'auth',role});}
+  function clearAuth(){generation++;recapTicket=null;session=null;role='public';name='Visitor';for(const key of Object.keys(documents))if(key.startsWith('dm:')||key==='intake'||key==='canon')delete documents[key];persist();emit({type:'auth',role});}
   async function request(path,options={}){
     const requestGeneration=generation;
     const headers={'Content-Type':'application/json',...(session?.token?{Authorization:'Bearer '+session.token}:{}),...options.headers};
@@ -47,11 +47,18 @@
   }
   async function login(password,requestedRole,displayName){
     const result=await request('/api/auth/login',{method:'POST',body:JSON.stringify({password,role:requestedRole,name:displayName})});
-    generation++;session=result;persist();role=result.role;name=result.name;documents={};
+    generation++;recapTicket=null;session=result;persist();role=result.role;name=result.name;documents={};
     if(refreshing)await refreshing;await refresh();emit({type:'auth',role});return result;
   }
   async function logout(){try{await request('/api/auth/logout',{method:'POST',body:'{}'});}finally{clearAuth();if(refreshing)await refreshing;await refresh();}}
   async function upload(file){if(role==='public')throw new Error('Sign in before uploading a recording.');if(file.size>50*1024*1024)throw new Error('Recordings must be 50 MiB or smaller.');return request('/api/files',{method:'POST',headers:{'Content-Type':file.type||'application/octet-stream','X-File-Name':encodeURIComponent(file.name)},body:file,signal:AbortSignal.timeout(300000)});}
+  async function unlockRecaps(password){const started=generation;if(role!=='dm')throw new Error('Sign in as Dungeon Master first.');const result=await request('/api/recaps/unlock',{method:'POST',body:JSON.stringify({password})});if(started!==generation||role!=='dm')throw new Error('Your access changed. Sign in again.');recapTicket=result.ticket;return request('/api/recaps',{headers:{'X-Recap-Unlock':recapTicket}});}
+  async function recapAudio(id){
+    if(role!=='dm'||!recapTicket)throw new Error('Unlock the private recap first.');const started=generation,ticket=recapTicket;
+    const response=await fetch(API+'/api/recaps/files/'+encodeURIComponent(id),{headers:{Authorization:'Bearer '+session.token,'X-Recap-Unlock':ticket},cache:'no-store',credentials:'omit',signal:AbortSignal.timeout(90000)});
+    if(!response.ok){if(response.status===401&&started===generation)clearAuth();throw new Error('Private playback is locked or unavailable. Unlock the recording again.');}
+    const blob=await response.blob();if(started!==generation||role!=='dm'||ticket!==recapTicket)throw new Error('Private playback was locked.');return blob;
+  }
   function updateAccess(){const button=document.getElementById('accessButton');if(button){button.textContent=role==='dm'?'DM access':role==='party'?'Party access':'Party sign-in';button.dataset.role=role;}const status=document.getElementById('sharedStatus');if(status){status.textContent=pending.size?'Saving…':loading&&!online?'Connecting…':online?'Shared archive online':'Shared archive unavailable';status.dataset.online=String(online);}}
   function signIn(requestedRole='party'){
     const dialog=document.getElementById('accessDialog');if(!dialog)return;
@@ -69,7 +76,7 @@
     document.getElementById('accessSignout').onclick=async()=>{await logout();dialog.close();};
     document.getElementById('accessUpgrade').onclick=()=>signIn('dm');updateAccess();
   }
-  window.CampaignSync={get role(){return role;},get online(){return online;},get name(){return name;},canEdit:()=>role!=='public',canDM:()=>role==='dm',get:(key,fallback)=>copy(documents[key]?.data??fallback),version:key=>documents[key]?.version||0,save,refresh,signIn,logout,upload,fileURL:async id=>(await request('/api/files/'+encodeURIComponent(id)+'/url')).url,subscribe:fn=>{listeners.add(fn);return()=>listeners.delete(fn);},history:key=>request('/api/history?key='+encodeURIComponent(key)),revokeParty:()=>request('/api/auth/revoke',{method:'POST',body:'{}'})};
+  window.CampaignSync={get role(){return role;},get online(){return online;},get name(){return name;},canEdit:()=>role!=='public',canDM:()=>role==='dm',get:(key,fallback)=>copy(documents[key]?.data??fallback),version:key=>documents[key]?.version||0,save,refresh,signIn,logout,upload,unlockRecaps,recapAudio,lockRecaps:()=>{recapTicket=null;},fileURL:async id=>(await request('/api/files/'+encodeURIComponent(id)+'/url')).url,subscribe:fn=>{listeners.add(fn);return()=>listeners.delete(fn);},history:key=>request('/api/history?key='+encodeURIComponent(key)),revokeParty:()=>request('/api/auth/revoke',{method:'POST',body:'{}'})};
   install();window.CampaignSync.ready=refresh();
   setInterval(()=>{if(!document.hidden&&!pending.size)refresh();},15000);
   document.addEventListener('visibilitychange',()=>{if(!document.hidden)refresh();});

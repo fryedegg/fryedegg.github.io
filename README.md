@@ -100,7 +100,7 @@ Drafts, full source snapshots, and uploaded source recordings are available to s
 
 ## Media, canon, and existing easter eggs
 
-The archive contains 1,714 recordings: 1,680 regenerated legacy clips, 28 Brook/Sen-47 lines, and six longer recaps/rants. Sixteen unique fragments omitted from the original index were recovered. The preserved standalone archive in `ghost-17x/` retains all 1,682 original audio files, including 1,664 indexed clips and two exact duplicates. The six original attached MP3s remain in `media/ghost/`; original Session 14, 15, and 16 PDFs remain in `media/recaps/`.
+The public archive contains 2,194 recordings: 1,680 regenerated legacy clips, 28 original Brook/Sen-47 lines, 480 new October 25 clips, and six longer recaps/rants. The New lines tab (`#ghost/new`) selects the new batch. It includes 40 each for Lor, Aelyn, Spore, Killua, Asra, Brook/Sen-47, Flint, party banter, combat reactions, NPCs/contacts, recent events, and field commentary. The new batch has separate downloadable CSV/JSON transcripts with source references. Sixteen unique fragments omitted from the original index were recovered. The preserved standalone archive in `ghost-17x/` retains all 1,682 original audio files, including 1,664 indexed clips and two exact duplicates. The six original attached MP3s remain in `media/ghost/`; original Session 14, 15, and 16 PDFs remain in `media/recaps/`.
 
 The regenerated voice preset is MiniMax 02 HD, Daegoth, English, American, Robotic Assistant, speed 1, Angry. The Skyrim adaptation audit and transcripts remain downloadable. Long-recording passage buttons use actual audio offsets; the persistent player survives route changes. Continuous playback is optional.
 
@@ -114,7 +114,13 @@ Planet surfaces are procedural illustrations. The map renders only while mounted
 
 `campaign-shopping.js`, `shop-views.js`, and `shopping.css` retain the October 13 shopping update: seven recorded merchant entries under Straleon/Chromehymn, with 143 priced stock entries (133 equipment entries and ten Nocturne 13 counter entries). Search, stock filters, price sorting, and item rules use the saved catalog. Stock subtracts all audited shopping purchases, including Asra; no restock was assumed. The Velvet Counter retains its last recorded inventory, with post-battle trading status explicitly unknown.
 
-`#session/S16` contains the October 11, 2026 recap, *Leather, Latex & Legion*, and links its unchanged original PDF at `media/recaps/session-16.pdf`. GHOST-17X’s firsthand/reconstruction boundary, original spelling, and source wording are preserved. Session 16 remains linked through the journal, latest bridge log, map timeline, search, and journey. No audio recording was supplied for Session 16. Character sheets and the private purchase audit remain in the local campaign project and are not published.
+`#session/S16` contains the October 11, 2026 written recap, *Leather, Latex & Legion*, and links its unchanged original PDF at `media/recaps/session-16.pdf`. GHOST-17X’s firsthand/reconstruction boundary, original spelling, and source wording are preserved. Session 16 remains linked through the journal, latest bridge log, map timeline, search, and journey. Its new spoken adaptation is one continuous 5:33 recording at `#ghost-dm`, protected by DM sign-in and a second recording password. The complete original written source and production notes are available after unlocking. Four new after-action callbacks bridge a passage that the voice provider could not render; the transcript matches the assembled audio. Character sheets and the private purchase audit remain in the local campaign project and are not published.
+
+### Private Ghost recordings
+
+`ghost-private.js` and `.css` render the private archive. The service stores its metadata in `dm:recaps`, excluded from ordinary state responses even for the DM. Unlocking issues a one-hour ticket bound to the current DM session. Private audio requires both headers on every request and is excluded from the generic signed-file URL route. Passwords, transcript, and audio are absent from static assets. Unlock data stays in memory; locking, navigating away, or signing out clears players, text, and temporary blob URLs. Recording passwords and runtime secrets stay outside this public repository.
+
+Backups include the public website source and assets, Git history, original recording masters, production campaign documents/revisions, protected recap, and service source. Private recovery material is encrypted before upload to the shared campaign Drive folder; consult the backup README and manifest for restoration instructions.
 
 ### Adding archive recordings
 
