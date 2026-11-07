@@ -2086,6 +2086,16 @@ window.CAMPAIGN_DATA = {
         "label": "Glassend"
       },
       "crew": "c2"
+    },
+    {
+      "name": "Asra",
+      "crew": "c2",
+      "stance": "allied",
+      "kind": "Current identity · Killua’s body",
+      "role": "In full control of Killua’s body",
+      "image": "media/art/asra-current-2026-11-07.webp",
+      "imageAlt": "Asra in full control of Killua’s body · current appearance",
+      "desc": "<p>Asra is currently in full control of <a href=\"#person/Killua\">Killua’s body</a>. This portrait shows her current appearance, confirmed by the campaign owner on November 7, 2026.</p><p>Her current look features tousled white hair, blue-violet skin, violet eyes, dark eye makeup, and black straps, chains, boots, and a long patterned coat.</p><p>The Session 14 record last located Killua’s soul in Echo’s southern hemisphere, with exact coordinates unknown. The new portrait records Asra’s present appearance; earlier depictions remain in the art library.</p>"
     }
   ],
   "POI_DM": [],
@@ -2107,12 +2117,15 @@ window.CAMPAIGN_DATA = {
       "pronouns": "",
       "species": "Syralith",
       "class": "Fighter 4 / Paladin 10 (Echo Knight)",
-      "tagline": "Session 14: the Void took his soul to Echo’s southern hemisphere. Asra now inhabits his body; twenty summoned soldiers await orders.",
-      "image": "media/art/005-killua-with-asra-echo-syralith-knight.webp",
+      "tagline": "Asra is now in full control of his body. Session 14 located Killua’s soul in Echo’s southern hemisphere; twenty summoned soldiers await orders.",
+      "image": "media/art/asra-current-2026-11-07.webp",
       "altImage": "images/portraits/killua-echo-sheath.png",
       "altLabel": "Echo Sheath",
       "status": "active",
-      "order": 2
+      "order": 2,
+      "imageAlt": "Asra in full control of Killua’s body · current appearance",
+      "fullName": "Asra in full control · Killua’s body",
+      "currentIdentity": "Asra"
     },
     {
       "name": "Aelyn Vox",

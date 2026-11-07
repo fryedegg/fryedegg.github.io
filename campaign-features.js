@@ -72,6 +72,7 @@ window.createCodexFeatures = function (ctx) {
   for (const person of D.CREW.filter(c => c.status === 'active')) edge('crew:H.O.C.2.A', p(person.name), 'Crew', 'Current crew record');
   for (const name of ['Grim', 'Keira', 'Lor', 'Ellie', 'Cro']) edge('crew:Codex Crew', p(name), 'Original crew archive', 'Original crew portrait and campaign archive');
   const facts = [
+    [p('Asra'), p('Killua'), 'Asra is in full control of Killua’s body', 'Campaign owner confirmation · November 7, 2026'],
     [p('Lor'), p('Ellie'), 'Married', 'Session 0 / crew record'],
     [p('Lor'), p('Cae'), 'Shard connection in the record', 'Cae’s existing contact record'],
     [p('Cro'), p('Ellie'), 'Killed during the Shattering', 'Crew record / Session 0'],

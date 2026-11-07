@@ -1,6 +1,15 @@
 window.CAMPAIGN_MEDIA = {
   "art": [
     {
+      "id": "asra-current-20261107",
+      "title": "Asra · full control of Killua’s body · current appearance",
+      "category": "01 Player Characters",
+      "source": "Campaign owner upload / Asra / 0B176E34-6E44-4FE9-A8E2-563753B8A9D1.PNG",
+      "src": "media/art/asra-current-2026-11-07.webp",
+      "video": false,
+      "caption": "Current appearance of Asra in full control of Killua’s body, confirmed November 7, 2026."
+    },
+    {
       "id": "003",
       "title": "5p0r3 - mycelium mech frame",
       "category": "01 Player Characters",
@@ -1477,10 +1486,11 @@ window.CAMPAIGN_MEDIA = {
     "Cro (Crystal Titan)": "media/art/106-crovil.webp",
     "Cro": "media/art/106-crovil.webp",
     "Aelyn Vox": "media/art/004-aelyn-and-ghost-hooded-with-rifle-and-drone.webp",
-    "Killua": "media/art/005-killua-with-asra-echo-syralith-knight.webp",
+    "Killua": "media/art/asra-current-2026-11-07.webp",
     "Flint D. McCoy": "media/art/002-flint-tattooed-portrait-with-cyber-arm.webp",
     "5p0r3": "media/art/003-5p0r3-mycelium-mech-frame.webp",
-    "Zelqua": "media/art/103-zelqua-the-whisper-host.webp"
+    "Zelqua": "media/art/103-zelqua-the-whisper-host.webp",
+    "Asra": "media/art/asra-current-2026-11-07.webp"
   },
   "placeMatches": {
     "straleon": "media/art/108-chromehymn-planetary-establishing.webp",
